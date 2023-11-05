@@ -1,0 +1,75 @@
+﻿@model DuAnFptShop.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressDelivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressDelivery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiverName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiverName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiverPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceiverPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentMethod.PaymentMethodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentMethod.PaymentMethodName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
