@@ -1,0 +1,255 @@
+﻿@model IEnumerable<DuAnFptShop.Models.ProductDetail>
+
+<style>
+    .slider-product-one-items {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .slider-product-one-title {
+        color: #CD1817;
+        font-size: larger;
+        padding: 20px 0px 20px 20px;
+    }
+
+    .slider-product-one-item {
+        width: 25%;
+        border-radius: 5px;
+        padding: 10px;
+        position: relative;
+    }
+
+        .slider-product-one-item:hover {
+            border: 1px solid #DEE2E6;
+        }
+
+            .slider-product-one-item:hover > img {
+                width: 100%;
+                transition: all 0.3s ease;
+            }
+
+        .slider-product-one-item > img {
+            width: 95%;
+            cursor: pointer;
+        }
+
+    .slider-product-one-item-text-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+        .slider-product-one-item-text-info p:nth-child(1) {
+            font-size: 20px;
+            font-weight: bold;
+            color: #474C51;
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+            .slider-product-one-item-text-info p:nth-child(1):hover {
+                color: royalblue;
+            }
+
+        .slider-product-one-item-text-info p:nth-child(2) {
+            display: inline-block;
+            background-color: #CB1C22;
+            color: white;
+            border-radius: 10px;
+            width: 130px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .slider-product-one-item-text-info p:nth-child(3) {
+            display: inline-block;
+            color: #919191;
+            text-decoration: line-through;
+        }
+
+    .slider-product-one-item-text-promo {
+        padding: 10px;
+        margin-bottom: 30px;
+        color: #555555;
+    }
+
+        .slider-product-one-item-text-promo img {
+            border-radius: 100%;
+            border: 1px solid grey;
+        }
+</style>
+
+<div class="slider-product-one-items">
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product5.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy A23 5G</p>
+                <p class="newPrice">4.990.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">5.990.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Snapdragon 695 5G</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.6 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 4 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="" />
+                    <p></p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product6.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy A14 4G</p>
+                <p class="newPrice">3.690.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">4.490.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Exynos 850</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.6 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 4 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product7.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy Z Fold 5G 256GB</p>
+                <p class="newPrice">33.990.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">40.990.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Snapdragon 8 Gen 2</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.7 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 8 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 256GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product8.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy Z Flip5 5G 256GB</p>
+                <p class="newPrice">19.790.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">25.990.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Mediatek Helio G88</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.7 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 8 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slider-product-one-items">
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product9.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy S23 ULtra 5G 256GB</p>
+                <p class="newPrice">22.990.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">31.990.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Snapdragon 8 Gen 2</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.8 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 8 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 256GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product10.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy A54 5G 128GB</p>
+                <p class="newPrice">9.090.000 <span style="text-decoration:underline">đ</span></p>
+                <p class="oldPrice">10.490.000 <span style="text-decoration:underline">đ</span></p>
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Exynos 1380</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.4 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 8 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product11.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy A34 5G</p>
+                <p class="newPrice">7.990.000 <span style="text-decoration:underline">đ</span></p>
+                <!-- <p class="oldPrice">8.490.000 <span style="text-decoration:underline">đ</span></p> -->
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Exynos 1380</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.4 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 8 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="~/images/zalo-pay.jpg" />
+                    <p>Giảm 200.000đ qua Zalo-Pay QR</p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+    <div class="slider-product-one-item">
+        <img src="~/images/slider-product12.1.jpg" />
+        <div class="slider-product-one-item-text">
+            <div class="slider-product-one-item-text-info">
+                <p>Samsung Galaxy A05 128GB</p>
+                <p class="newPrice">3.090.000 <span style="text-decoration:underline">đ</span></p>
+                <!--  <p class="oldPrice">4.990.000 <span style="text-decoration:underline">đ</span></p> -->
+            </div>
+            <div class="slider-product-one-item-text-promo">
+                <ul>
+                    <li><i class="fa-solid fa-microchip"></i> Helio G85</li>
+                    <li><i class="fa-regular fa-mobile"></i> 6.7 inch</li>
+                    <li><i class="fa-solid fa-memory"></i> 4 GB</li>
+                    <li><i class="fa-solid fa-ticket"></i> 128GB</li>
+                </ul>
+                @*<img src="" />
+                    <p></p>*@
+                <button>MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+</div>

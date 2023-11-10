@@ -1,0 +1,102 @@
+﻿@model IEnumerable<DuAnFptShop.Models.ViewModel.ProductViewModel>
+
+
+<style>
+    .slider-product-one-items {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .slider-product-one-title {
+        color: #CD1817;
+        font-size: larger;
+        padding: 20px 0px 20px 20px;
+    }
+
+    .slider-product-one-item {
+        width: 25%;
+        border-radius: 5px;
+        padding: 10px;
+        position: relative;
+    }
+
+        .slider-product-one-item:hover {
+            border: 1px solid #DEE2E6;
+        }
+
+            .slider-product-one-item:hover > img {
+                width: 100%;
+                transition: all 0.3s ease;
+            }
+
+        .slider-product-one-item > img {
+            width: 95%;
+            cursor: pointer;
+        }
+
+    .slider-product-one-item-text-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+        .slider-product-one-item-text-info p:nth-child(1) {
+            font-size: 20px;
+            font-weight: bold;
+            color: #474C51;
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+            .slider-product-one-item-text-info p:nth-child(1):hover {
+                color: royalblue;
+            }
+
+        .slider-product-one-item-text-info p:nth-child(2) {
+            display: inline-block;
+            background-color: #CB1C22;
+            color: white;
+            border-radius: 10px;
+            width: 130px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .slider-product-one-item-text-info p:nth-child(3) {
+            display: inline-block;
+            color: #919191;
+            text-decoration: line-through;
+        }
+
+    .slider-product-one-item-text-promo {
+        padding: 10px;
+        margin-bottom: 30px;
+        color: #555555;
+    }
+
+        .slider-product-one-item-text-promo img {
+            border-radius: 100%;
+            border: 1px solid grey;
+        }
+</style>
+
+@if (Model != null)
+{
+    <div class="slider-product-one-items">
+        @foreach (var product in Model)
+        {
+            <div class="slider-product-one-item">
+                <img src="@Url.Content(product.ProImage)" />
+                <div class="slider-product-one-item-text">
+                    <div class="slider-product-one-item-text-info">
+                        <p>@Html.DisplayFor(model => product.ProName)</p>
+                        <p class="newPrice">@string.Format("{0:N0}", product.NewPrice) <span style="text-decoration: underline">đ</span></p>
+                        <!-- Thêm các trường dữ liệu khác tương ứng -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

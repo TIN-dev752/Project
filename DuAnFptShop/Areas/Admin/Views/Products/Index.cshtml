@@ -39,22 +39,30 @@
             line-height: 50px;
         }
 
+    .list-content{
+        width:100%;
+    }
+
+    .table{
+        width:1400px;
+    }
+
     th {
         font-size: 14px;
     }
 
     .btn-Edit {
-        background-color: red;
+        background-color: darkred;
         margin-bottom: 3px;
     }
 
     .btn-Details {
-        background-color: blue;
+        background-color: darkblue;
         margin-bottom: 3px;
     }
 
     .btn-Delete {
-        background-color: green;
+        background-color: darkgreen;
         margin-bottom: 3px;
     }
 
@@ -78,6 +86,10 @@
     .btn-default {
         border: 1px solid #CFD5DB;
         border-radius: 5px;
+    }
+
+    .btn-default:hover{
+        background-color:powderblue;
     }
 
         .btn-default a {
@@ -196,9 +208,9 @@
                             @Html.DisplayFor(modelItem => item.ScreenSize.Size)
                         </td>
                         <td>
-                            <button class="btn btn-Edit"> @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) </button>
-                            <button class="btn btn-Details"> @Html.ActionLink("Details", "Details", new { id = item.ProductID }) </button>
-                            <button class="btn btn-Delete"> @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }) </button>
+                            <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID }) </button>
+                            <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }) </button>
+                            <button class="btn btn-Delete"> @Html.ActionLink("Xóa", "Delete", new { id = item.ProductID }) </button>
                         </td>
                     </tr>
                 }

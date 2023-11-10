@@ -13,10 +13,10 @@ namespace DuAnFptShop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FPTSHOPEntities10 : DbContext
+    public partial class FPTSHOPEntities1 : DbContext
     {
-        public FPTSHOPEntities10()
-            : base("name=FPTSHOPEntities10")
+        public FPTSHOPEntities1()
+            : base("name=FPTSHOPEntities1")
         {
         }
     
@@ -43,5 +43,6 @@ namespace DuAnFptShop.Models
         public virtual DbSet<Ram> Rams { get; set; }
         public virtual DbSet<ScreenSize> ScreenSizes { get; set; }
         public virtual DbSet<Storage> Storages { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -40,18 +40,45 @@
         margin-top: 20px;
     }
 
-    .btn {
-        border-radius: 5px;
-        border: 1px solid #CFD5DB;
+    .btn-Edit {
+        background-color: darkred;
+        margin-bottom: 3px;
     }
 
-        .btn a {
-            text-decoration: none;
-        }
+    .btn-Details {
+        background-color: darkblue;
+        margin-bottom: 3px;
+    }
+
+    .btn-Delete {
+        background-color: darkgreen;
+        margin-bottom: 3px;
+    }
+
+    .btn a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-Edit:hover {
+        background-color: red;
+    }
+
+    .btn-Details:hover {
+        background-color: blue;
+    }
+
+    .btn-Delete:hover {
+        background-color: green;
+    }
 
     .btn-default {
         border: 1px solid #CFD5DB;
         border-radius: 5px;
+    }
+
+    .btn-default:hover{
+        background-color:powderblue;
     }
 
         .btn-default a {
@@ -98,9 +125,9 @@
                         @Html.DisplayFor(modelItem => item.CateName)
                     </td>
                     <td>
-                        <button class="btn btn-edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.CateID }) </button>
-                        <button class="btn btn-detail"> @Html.ActionLink("Xem chi tiết", "Details", new { id = item.CateID }) </button>
-                        <button class="btn btn-delete"> @Html.ActionLink("Xóa", "Delete", new { id = item.CateID }) </button>
+                        <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.CateID }) </button> 
+                        <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.CateID }) </button> 
+                        <button class="btn btn-Delete"> @Html.ActionLink("Xóa", "Delete", new { id = item.CateID }) </button>
                     </td>
                 </tr>
             }

@@ -17,6 +17,7 @@ namespace DuAnFptShop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductDetail()
         {
+            this.OrderItems = new HashSet<OrderItem>();
             this.ProductDiscounts = new HashSet<ProductDiscount>();
         }
     
@@ -29,6 +30,8 @@ namespace DuAnFptShop.Models
         public Nullable<int> StorageID { get; set; }
     
         public virtual Color Color { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual Product Product { get; set; }
         public virtual Ram Ram { get; set; }
         public virtual Storage Storage { get; set; }

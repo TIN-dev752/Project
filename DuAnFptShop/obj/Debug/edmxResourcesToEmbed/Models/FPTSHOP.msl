@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities10">
+  <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities1">
     <EntitySetMapping Name="CameraFeatures">
       <EntityTypeMapping TypeName="FPTSHOPModel.CameraFeature">
         <MappingFragment StoreEntitySet="CameraFeature">
@@ -51,8 +51,8 @@
         <MappingFragment StoreEntitySet="OrderItems">
           <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductDetailID" ColumnName="ProductDetailID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -67,6 +67,8 @@
           <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
           <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
           <ScalarProperty Name="ReceiverPhone" ColumnName="ReceiverPhone" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -188,6 +190,15 @@
         <MappingFragment StoreEntitySet="Storage">
           <ScalarProperty Name="StorageID" ColumnName="StorageID" />
           <ScalarProperty Name="StorageName" ColumnName="StorageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FPTSHOPModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

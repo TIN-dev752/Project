@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DuAnFptShop.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductController : Controller
     {
         // GET: Products
         public ActionResult Index()

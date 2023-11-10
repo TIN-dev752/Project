@@ -77,6 +77,8 @@ D:\FPTSHOP\DuAnFptShop\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.CoreCompileInput
 D:\FPTSHOP\DuAnFptShop\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.CopyComplete
 D:\FPTSHOP\DuAnFptShop\DuAnFptShop\obj\Debug\DuAnFptShop.dll
 D:\FPTSHOP\DuAnFptShop\DuAnFptShop\obj\Debug\DuAnFptShop.pdb
+C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\DuAnFptShop.dll.config
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\DuAnFptShop.dll
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\DuAnFptShop.pdb
@@ -155,8 +157,6 @@ C:\Users\admin\Desktop\Project\DuAnFptShop\bin\System.Web.WebPages.Razor.xml
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\Newtonsoft.Json.xml
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\Antlr3.Runtime.pdb
 C:\Users\admin\Desktop\Project\DuAnFptShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.AssemblyReference.cache
-C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.csproj.CopyComplete
 C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.dll
 C:\Users\admin\Desktop\Project\DuAnFptShop\obj\Debug\DuAnFptShop.pdb

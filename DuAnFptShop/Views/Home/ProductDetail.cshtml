@@ -1,8 +1,10 @@
-﻿
+﻿@model DuAnFptShop.Models.ViewModel.DetailProduct
+
 @{
     ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_MasterLayout1.cshtml";
 }
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
@@ -30,13 +32,13 @@
             <div class="product-top-content">
                 <h1>Samsung Galaxy A23 5G <span>(No.00842520)</span></h1>
                 @*<div class="product-rating">
-                    <ul>
-                        <li><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></li>
-                        <li><a href="">0 Đánh giá</a></li>
-                        <li><a href="">0 Hỏi & Đáp</a></li>
-                        <li><a href=""><i class="fa-solid fa-circle-plus"></i> So sánh</a></li>
-                    </ul>
-                </div>*@
+                        <ul>
+                            <li><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></li>
+                            <li><a href="">0 Đánh giá</a></li>
+                            <li><a href="">0 Hỏi & Đáp</a></li>
+                            <li><a href=""><i class="fa-solid fa-circle-plus"></i> So sánh</a></li>
+                        </ul>
+                    </div>*@
             </div>
         </div>
     </div>
@@ -47,10 +49,10 @@
                     <div class="product-slider">
                         <div class="product-slider-content">
                             <img src="~/images/slider-samsung-a23-1.jpg" />
-                            <img src="~/images/slider-samsung-a23-2.jpg" />
-                            <img src="~/images/slider-samsung-a23-3.jpg" />
-                            <img src="~/images/slider-samsung-a23-4.jpg" />
-                            <img src="~/images/slider-samsung-a23-5.jpg" />
+                            <img src="~/images/slider-samsung-a23-1.jpg" />
+                            <img src="~/images/slider-samsung-a23-1.jpg" />
+                            <img src="~/images/slider-samsung-a23-1.jpg" />
+                            <img src="~/images/slider-samsung-a23-1.jpg" />
                         </div>
                         <div class="porduct-slider-btn">
                             <div id="prev"><i class="fa-solid fa-chevron-left"></i></div>
@@ -84,8 +86,8 @@
                     </div>
                     <div class="product-param">
                         <ul>
-                            <li><i class="fa-solid fa-mobile-screen"></i><p title="Màn hình">6.6 inch, PLS LCD, FHD+, 1080 x 2408 Pixels</p></li>
-                            <li><i class="fa-solid fa-camera"></i><p title="Camera sau">50.0 MP + 5.0 MP + 2.0 MP + 2.0 MP</p></li>
+                            <li><i class="fa-solid fa-mobile-screen"></i><p title="Màn hình">Man hinh: @Model.Screen</p></li>
+                            <li><i class="fa-solid fa-camera"></i><p title="Camera sau">@Html.DisplayFor(model => model.Camera)</p></li>
                             <li><i class="fa-solid fa-image-portrait"></i><p title="Camera selfie">8.0 MP</p></li>
                             <li><i class="fa-solid fa-microchip"></i><p title="CPU">Snapdragon 695 5G</p></li>
                             <li><i class="fa-solid fa-ticket"></i><p title="Bộ nhớ trong">128 GB</p></li>
@@ -102,21 +104,21 @@
                 <div class="product-detail-right">
                     <div class="product-price">
                         <div class="product-price-left">
-                            <p class="newPrice">5.190.000<span>đ</span></p>
-                            <p class="oldPrice">5.990.000<span>đ</span></p>
+                            <p class="newPrice">@String.Format("{0:N0}", Model.NewPrice)<span>đ</span></p>
+                            <p class="oldPrice">@String.Format("{0:N0}", Model.OldPrice)<span>đ</span></p>
                         </div>
                         @*<div class="product-price-right">
-                            <p>Trả góp chỉ từ </p>
-                            <p>711.000₫/tháng</p>
-                        </div>*@
+                                <p>Trả góp chỉ từ </p>
+                                <p>711.000₫/tháng</p>
+                            </div>*@
                     </div>
                     @*<div class="product-reward-point">
-                        <span><i class="fa-solid fa-f"></i></span>
-                        <p>
-                            +1.222 điểm thưởng dự kiến
-                        </p>
-                        <i class="fa-solid fa-circle-info"></i>
-                    </div>*@
+                            <span><i class="fa-solid fa-f"></i></span>
+                            <p>
+                                +1.222 điểm thưởng dự kiến
+                            </p>
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>*@
                     <div class="select-color">
                         <div class="product-color-img">
                             <img class="active" src="~/images/slider-samsung-a23-1.jpg" />
@@ -132,14 +134,14 @@
                     <div class="product-discount">
                         <div class="product-discount-title">
                             <p>Chọn 1 trong 2 khuyến mãi sau</p>
-                        </div>  
+                        </div>
                         <div class="product-discount-content">
                             <div class="radio-discount">
                                 <ul>
-                                    <li><input type="radio" name="discount-radio" checked/><p>Giảm ngay 800,000đ</p></li>
+                                    <li><input type="radio" name="discount-radio" checked /><p>Giảm ngay 800,000đ</p></li>
                                     <li>
                                         <input type="radio" name="discount-radio" />
-                                        <p>Tặng máy ép chậm Kalite trị giá 3.000.000đ <span>Xem chi tiết</span></p> 
+                                        <p>Tặng máy ép chậm Kalite trị giá 3.000.000đ <span>Xem chi tiết</span></p>
                                     </li>
                                 </ul>
                             </div>
@@ -147,7 +149,7 @@
                                 <li><span>Ưu đãi thêm</span></li>
                                 <li><i class="fa-solid fa-circle-check"></i><p>Trả góp 0%</p></li>
                                 <li><i class="fa-solid fa-circle-check"></i><p>Tặng PMH 500,000đ mua Tivi samsung</p></li>
-                                <li><i class="fa-solid fa-circle-check"></i><p>Ưu đãi đặc quyền dành cho Tân Sinh Viên: Giảm thêm 5% | Học sinh Sinh viên | Giáo Viên: Giảm thêm 3% <span>Xem chi tiết</span></p></li>                            
+                                <li><i class="fa-solid fa-circle-check"></i><p>Ưu đãi đặc quyền dành cho Tân Sinh Viên: Giảm thêm 5% | Học sinh Sinh viên | Giáo Viên: Giảm thêm 3% <span>Xem chi tiết</span></p></li>
                             </ul>
                             <span class="expand-btn1">Xem thêm 3 ưu đãi khác<i class="fa-solid fa-chevron-down"></i></span>
                             <div class="product-discount-content-expand">
@@ -160,27 +162,27 @@
                         </div>
                     </div>
                     @*<div class="payment-discount">
-                        <div class="payment-discount-content">
-                            <div class="payment-discount-img">
-                                <img src="~/images/product-detail-zalo-pay.jpg" />
-                                <input type="checkbox" />
-                            </div>                 
-                            <div class="payment-discount-text">
-                                <h3>Ví ZaloPay</h3>
-                                <p>Nhập mã FPTSHOP200 giảm 1% tối đa 200.000 đồng khi thanh toán 100% qua ZaloPay <span>Xem chi tiết</span></p>
+                            <div class="payment-discount-content">
+                                <div class="payment-discount-img">
+                                    <img src="~/images/product-detail-zalo-pay.jpg" />
+                                    <input type="checkbox" />
+                                </div>
+                                <div class="payment-discount-text">
+                                    <h3>Ví ZaloPay</h3>
+                                    <p>Nhập mã FPTSHOP200 giảm 1% tối đa 200.000 đồng khi thanh toán 100% qua ZaloPay <span>Xem chi tiết</span></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="payment-discount-content">
-                            <div class="payment-discount-img">
-                                <img src="~/images/product-detail-redivo-pay.jpg" />
-                                <input type="checkbox" />
+                            <div class="payment-discount-content">
+                                <div class="payment-discount-img">
+                                    <img src="~/images/product-detail-redivo-pay.jpg" />
+                                    <input type="checkbox" />
+                                </div>
+                                <div class="payment-discount-text">
+                                    <h3>Thanh toán qua Kredivo</h3>
+                                    <p>Giảm ngay 5% tối đa 200.000 đồng khi thanh toán trả góp 6/12 tháng qua Kredivo <span>Xem chi tiết</span></p>
+                                </div>
                             </div>
-                            <div class="payment-discount-text">
-                                <h3>Thanh toán qua Kredivo</h3>
-                                <p>Giảm ngay 5% tối đa 200.000 đồng khi thanh toán trả góp 6/12 tháng qua Kredivo <span>Xem chi tiết</span></p>
-                            </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                     <div class="click-to-buy">
                         <button><span>MUA NGAY</span><br /> Giao hàng miễn phí hoặc nhận tại shop</button>
                         <button><span>TRẢ GÓP 0%</span><br /> Duyệt nhanh qua điện thoại</button>
@@ -694,7 +696,7 @@
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
     <section class="advisory">
         <div class="container">
             <div class="advisory-content">
@@ -733,5 +735,4 @@
     </section>
     <script defer src="~/Scripts/ProductDetailJS.js"></script>
 </body>
-
 

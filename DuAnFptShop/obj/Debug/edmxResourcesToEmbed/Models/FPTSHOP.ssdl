@@ -46,8 +46,8 @@
     </Key>
     <Property Name="OrderItemID" Type="int" Nullable="false" />
     <Property Name="OrderID" Type="int" />
-    <Property Name="ProductID" Type="int" />
     <Property Name="Quantity" Type="int" />
+    <Property Name="ProductDetailID" Type="int" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -61,6 +61,8 @@
     <Property Name="OrderStatus" Type="nvarchar" MaxLength="250" />
     <Property Name="ReceiverName" Type="nvarchar" MaxLength="250" />
     <Property Name="ReceiverPhone" Type="char" MaxLength="10" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="LastPrice" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="PaymentMethods">
     <Key>
@@ -180,6 +182,14 @@
     <Property Name="StorageID" Type="int" Nullable="false" />
     <Property Name="StorageName" Type="varchar" MaxLength="150" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <Association Name="FK__Categorie__CateI__5CD6CB2B">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
     <End Role="CategoriesSlider" Type="Self.CategoriesSlider" Multiplicity="*" />
@@ -201,18 +211,6 @@
       </Principal>
       <Dependent Role="OrderItems">
         <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__OrderItem__Produ__6A30C649">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-    <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductID" />
-      </Principal>
-      <Dependent Role="OrderItems">
-        <PropertyRef Name="ProductID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -396,6 +394,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_OrderItems_ProductDetail">
+    <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="0..1" />
+    <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDetail">
+        <PropertyRef Name="ProductDetailID" />
+      </Principal>
+      <Dependent Role="OrderItems">
+        <PropertyRef Name="ProductDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="FPTSHOPModelStoreContainer">
     <EntitySet Name="CameraFeature" EntityType="Self.CameraFeature" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
@@ -416,16 +426,13 @@
     <EntitySet Name="Ram" EntityType="Self.Ram" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ScreenSize" EntityType="Self.ScreenSize" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Categorie__CateI__5CD6CB2B" Association="Self.FK__Categorie__CateI__5CD6CB2B">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="CategoriesSlider" EntitySet="CategoriesSlider" />
     </AssociationSet>
     <AssociationSet Name="FK__OrderItem__Order__693CA210" Association="Self.FK__OrderItem__Order__693CA210">
       <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderItems" EntitySet="OrderItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK__OrderItem__Produ__6A30C649" Association="Self.FK__OrderItem__Produ__6A30C649">
-      <End Role="Product" EntitySet="Product" />
       <End Role="OrderItems" EntitySet="OrderItems" />
     </AssociationSet>
     <AssociationSet Name="FK__Orders__CusID__6754599E" Association="Self.FK__Orders__CusID__6754599E">
@@ -487,6 +494,10 @@
     <AssociationSet Name="FK__ProductSl__Produ__656C112C" Association="Self.FK__ProductSl__Produ__656C112C">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductSlider" EntitySet="ProductSlider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItems_ProductDetail" Association="Self.FK_OrderItems_ProductDetail">
+      <End Role="ProductDetail" EntitySet="ProductDetail" />
+      <End Role="OrderItems" EntitySet="OrderItems" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -4,31 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7a8e86ff63524e24a60fa0c6c2e07579" Name="Diagram1">
-        <EntityTypeShape EntityType="FPTSHOPModel.CameraFeature" Width="1.5" PointX="3.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Category" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.CategoriesSlider" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Color" Width="1.5" PointX="9" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Customer" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.OrderItem" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Order" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.PaymentMethod" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.PerformanceBattery" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Product" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductDetail" Width="1.5" PointX="11.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductDiscount" Width="1.5" PointX="13.5" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductNew" Width="1.5" PointX="8.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductQuestion" Width="1.5" PointX="8.25" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductSlider" Width="1.5" PointX="8.25" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Ram" Width="1.5" PointX="9" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ScreenSize" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Storage" Width="1.5" PointX="9" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="01b8a22d9fcf4d8b9e638371539536e8" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="FPTSHOPModel.CameraFeature" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Category" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.CategoriesSlider" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Color" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Customer" Width="1.5" PointX="6" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.OrderItem" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Order" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.PaymentMethod" Width="1.5" PointX="6" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.PerformanceBattery" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Product" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductDetail" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductDiscount" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductNew" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductQuestion" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductSlider" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Ram" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ScreenSize" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Storage" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="FPTSHOPModel.FK__Categorie__CateI__5CD6CB2B" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Product__CateID__59FA5E80" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__ProductDe__Color__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Orders__CusID__6754599E" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__OrderItem__Order__693CA210" ManuallyRouted="false" />
-        <AssociationConnector Association="FPTSHOPModel.FK__OrderItem__Produ__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="FPTSHOPModel.FK_OrderItems_ProductDetail" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Orders__PaymentM__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Product__Perform__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Product__ScreenS__5BE2A6F2" ManuallyRouted="false" />
