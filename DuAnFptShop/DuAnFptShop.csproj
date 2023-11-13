@@ -212,6 +212,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>FPTSHOP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\CartViewModel.cs" />
     <Compile Include="Models\ViewModel\DetailProduct.cs" />
     <Compile Include="Models\ViewModel\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -146,6 +146,12 @@ namespace DuAnFptShop.Controllers
         }
         public ActionResult ShopCart()
         {
+            List<OrderItem> orderItems = db.OrderItems.ToList();
+            List<CartViewModel> cartViewModel = orderItems.Select(orderItem => new CartViewModel
+            { 
+                ProductDetailID = (int)orderItem.ProductDetailID,
+                NewPrice = orderItem.Ne
+            }).ToList();
             return View();
         }
         

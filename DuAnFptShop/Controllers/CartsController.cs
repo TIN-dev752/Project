@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuAnFptShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,11 @@ namespace DuAnFptShop.Controllers
 {
     public class CartsController : Controller
     {
-        // GET: Carts
-        public ActionResult Index()
+        private FPTSHOPEntities2 db = new FPTSHOPEntities2();
+        public ActionResult CartItemPartialView(int id)
         {
-            return View();
+            var item = db.OrderItems.Where(q => q.ProductDetailID == id).FirstOrDefault();
+            return PartialView(item);
         }
     }
 }
