@@ -120,6 +120,7 @@
     <Property Name="OldPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="RamID" Type="int" />
     <Property Name="StorageID" Type="int" />
+    <Property Name="ColorImage" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="ProductDiscounts">
     <Key>
@@ -139,10 +140,10 @@
     </Key>
     <Property Name="ProductNewsID" Type="int" Nullable="false" />
     <Property Name="NewsTitle" Type="nvarchar" MaxLength="250" />
-    <Property Name="NewsContent" Type="nvarchar(max)" />
     <Property Name="NewsImage" Type="varchar" MaxLength="250" />
     <Property Name="NewsTags" Type="varchar" MaxLength="100" />
     <Property Name="ProductID" Type="int" />
+    <Property Name="TypeNews" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="ProductQuestion">
     <Key>

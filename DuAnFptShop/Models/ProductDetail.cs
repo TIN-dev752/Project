@@ -28,6 +28,7 @@ namespace DuAnFptShop.Models
         public Nullable<decimal> OldPrice { get; set; }
         public Nullable<int> RamID { get; set; }
         public Nullable<int> StorageID { get; set; }
+        public string ColorImage { get; set; }
     
         public virtual Color Color { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

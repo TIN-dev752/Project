@@ -125,6 +125,7 @@
           <Property Name="OldPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="RamID" Type="int" />
           <Property Name="StorageID" Type="int" />
+          <Property Name="ColorImage" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductDiscounts">
           <Key>
@@ -144,10 +145,10 @@
           </Key>
           <Property Name="ProductNewsID" Type="int" Nullable="false" />
           <Property Name="NewsTitle" Type="nvarchar" MaxLength="250" />
-          <Property Name="NewsContent" Type="nvarchar(max)" />
           <Property Name="NewsImage" Type="varchar" MaxLength="250" />
           <Property Name="NewsTags" Type="varchar" MaxLength="100" />
           <Property Name="ProductID" Type="int" />
+          <Property Name="TypeNews" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="ProductQuestion">
           <Key>
@@ -643,6 +644,7 @@
           <Property Name="OldPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="RamID" Type="Int32" />
           <Property Name="StorageID" Type="Int32" />
+          <Property Name="ColorImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Color" Relationship="Self.FK__ProductDe__Color__5EBF139D" FromRole="ProductDetail" ToRole="Color" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_OrderItems_ProductDetail" FromRole="ProductDetail" ToRole="OrderItems" />
           <NavigationProperty Name="Product" Relationship="Self.FK__ProductDe__Produ__5DCAEF64" FromRole="ProductDetail" ToRole="Product" />
@@ -669,10 +671,10 @@
           </Key>
           <Property Name="ProductNewsID" Type="Int32" Nullable="false" />
           <Property Name="NewsTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="NewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NewsImage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="NewsTags" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductID" Type="Int32" />
+          <Property Name="TypeNews" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK__ProductNe__Produ__6477ECF3" FromRole="ProductNews" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductQuestion">
@@ -922,7 +924,7 @@
           <End Role="CameraFeature" Type="Self.CameraFeature" Multiplicity="*" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="FPTSHOPEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FPTSHOPEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CameraFeatures" EntityType="Self.CameraFeature" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="CategoriesSliders" EntityType="Self.CategoriesSlider" />
@@ -1016,7 +1018,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities1">
+        <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities2">
           <EntitySetMapping Name="CameraFeatures">
             <EntityTypeMapping TypeName="FPTSHOPModel.CameraFeature">
               <MappingFragment StoreEntitySet="CameraFeature">
@@ -1138,6 +1140,7 @@
                 <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
                 <ScalarProperty Name="RamID" ColumnName="RamID" />
                 <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="ColorImage" ColumnName="ColorImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1159,10 +1162,10 @@
               <MappingFragment StoreEntitySet="ProductNews">
                 <ScalarProperty Name="ProductNewsID" ColumnName="ProductNewsID" />
                 <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
-                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
                 <ScalarProperty Name="NewsImage" ColumnName="NewsImage" />
                 <ScalarProperty Name="NewsTags" ColumnName="NewsTags" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TypeNews" ColumnName="TypeNews" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

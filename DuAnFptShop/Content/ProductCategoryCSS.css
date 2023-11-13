@@ -294,6 +294,7 @@
 
 .slider-product-one-items {
     display: flex;
+    flex-wrap:wrap;
     justify-content: space-evenly;
 }
 
@@ -304,7 +305,7 @@
 }
 
 .slider-product-one-item {
-    width: 33%;
+    width: 33.33%;
     border-radius: 5px;
     padding: 10px;
     position: relative;
@@ -383,7 +384,7 @@
             color: #B6BFC7;
         }
 
-    .slider-product-one-item-text-promo button {
+    .slider-product-one-item-text-promo a input {
         position: absolute;
         width: 50%;
         height: 40px;
@@ -397,7 +398,7 @@
         cursor:pointer;
     }
 
-.slider-product-one-item:hover button {
+.slider-product-one-item:hover a input {
     display: block;
 }
 

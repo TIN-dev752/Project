@@ -1,5 +1,4 @@
-﻿@model IEnumerable<DuAnFptShop.Models.Product>
-@{
+﻿@{
     ViewBag.Title = "HomePage";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
@@ -136,7 +135,7 @@
             <div class="slider-product-one-title">
                 <h3>KHUYỄN MÃI HOT</h3>
             </div>
-            @Html.Partial("HotDealList")
+            @Html.Action("HotDealListPartialView","Home")
         </div>
     </section>
     <section class="banner-2">
@@ -163,7 +162,7 @@
             <div class="slider-product-one-title">
                 <h3>ĐIỆN THOẠI NỔI BẬT</h3>
             </div>
-            @Html.Partial("OutstandingList")
+            @Html.Action("OutstandingListPartialView","Home")
         </div>
     </section>
     <script src="~/Scripts/HomePageJS.js"></script>

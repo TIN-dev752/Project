@@ -12,7 +12,7 @@ namespace DuAnFptShop.Areas.Admin.Controllers
 {
     public class OrdersController : Controller
     {
-        private FPTSHOPEntities1 db = new FPTSHOPEntities1();
+        private FPTSHOPEntities2 db = new FPTSHOPEntities2();
 
         // GET: Admin/Orders
         public ActionResult Index()

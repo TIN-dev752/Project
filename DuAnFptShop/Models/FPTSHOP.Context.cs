@@ -13,10 +13,10 @@ namespace DuAnFptShop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FPTSHOPEntities1 : DbContext
+    public partial class FPTSHOPEntities2 : DbContext
     {
-        public FPTSHOPEntities1()
-            : base("name=FPTSHOPEntities1")
+        public FPTSHOPEntities2()
+            : base("name=FPTSHOPEntities2")
         {
         }
     

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities1">
+  <EntityContainerMapping StorageEntityContainer="FPTSHOPModelStoreContainer" CdmEntityContainer="FPTSHOPEntities2">
     <EntitySetMapping Name="CameraFeatures">
       <EntityTypeMapping TypeName="FPTSHOPModel.CameraFeature">
         <MappingFragment StoreEntitySet="CameraFeature">
@@ -122,6 +122,7 @@
           <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
           <ScalarProperty Name="RamID" ColumnName="RamID" />
           <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+          <ScalarProperty Name="ColorImage" ColumnName="ColorImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -143,10 +144,10 @@
         <MappingFragment StoreEntitySet="ProductNews">
           <ScalarProperty Name="ProductNewsID" ColumnName="ProductNewsID" />
           <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
-          <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
           <ScalarProperty Name="NewsImage" ColumnName="NewsImage" />
           <ScalarProperty Name="NewsTags" ColumnName="NewsTags" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="TypeNews" ColumnName="TypeNews" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

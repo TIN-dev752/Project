@@ -349,7 +349,7 @@ ul {
 
 /*-----------------------------------slider-product2------------------------------*/
 
-.slider-product-one-item-text-promo ul {
+/*.slider-product-one-item-text-promo ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -378,3 +378,4 @@ ul {
 .slider-product-one-item:hover button {
     display: block;
 }
+*/

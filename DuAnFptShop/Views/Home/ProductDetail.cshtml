@@ -18,9 +18,9 @@
         <div class="container">
             <div class="navbar-content">
                 <ul>
-                    <li><a href="HomePage">Trang chủ</a></li>
+                    <li><a href="@Url.Action("HomePage","Home")">Trang chủ</a></li>
                     <li style="color: #CCCCCC">/</li>
-                    <li><a href="ProductCategory">Điện thoại</a></li>
+                    <li><a href="@Url.Action("ProductCategory","Home")">Điện thoại</a></li>
                     <li style="color: #CCCCCC">/</li>
                     <li><a href="">Samsung</a></li>
                 </ul>
@@ -30,7 +30,7 @@
     <div class="product-top">
         <div class="container">
             <div class="product-top-content">
-                <h1>Samsung Galaxy A23 5G <span>(No.00842520)</span></h1>
+                <h1>@Html.DisplayFor(model => model.ProName) <span>(No.00842520)</span></h1>
                 @*<div class="product-rating">
                         <ul>
                             <li><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></li>
@@ -46,28 +46,7 @@
         <div class="container">
             <div class="product-detail-content">
                 <div class="product-detail-left">
-                    <div class="product-slider">
-                        <div class="product-slider-content">
-                            <img src="~/images/slider-samsung-a23-1.jpg" />
-                            <img src="~/images/slider-samsung-a23-1.jpg" />
-                            <img src="~/images/slider-samsung-a23-1.jpg" />
-                            <img src="~/images/slider-samsung-a23-1.jpg" />
-                            <img src="~/images/slider-samsung-a23-1.jpg" />
-                        </div>
-                        <div class="porduct-slider-btn">
-                            <div id="prev"><i class="fa-solid fa-chevron-left"></i></div>
-                            <div id="next"><i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="dots">
-                            <ul>
-                                <li class="active"></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @Html.Action("ProductSliderPartialView", "Product")
                     <div class="product-slider-feature">
                         <ul>
                             <li>
@@ -86,11 +65,11 @@
                     </div>
                     <div class="product-param">
                         <ul>
-                            <li><i class="fa-solid fa-mobile-screen"></i><p title="Màn hình">Man hinh: @Model.Screen</p></li>
+                            <li><i class="fa-solid fa-mobile-screen"></i><p title="Màn hình">@Model.Screen</p></li>
                             <li><i class="fa-solid fa-camera"></i><p title="Camera sau">@Html.DisplayFor(model => model.Camera)</p></li>
-                            <li><i class="fa-solid fa-image-portrait"></i><p title="Camera selfie">8.0 MP</p></li>
-                            <li><i class="fa-solid fa-microchip"></i><p title="CPU">Snapdragon 695 5G</p></li>
-                            <li><i class="fa-solid fa-ticket"></i><p title="Bộ nhớ trong">128 GB</p></li>
+                            <li><i class="fa-solid fa-image-portrait"></i><p title="Camera selfie">@Html.DisplayFor(model => model.CameraSelfie)</p></li>
+                            <li><i class="fa-solid fa-microchip"></i><p title="CPU">@Html.DisplayFor(model => model.Cpu)</p></li>
+                            <li><i class="fa-solid fa-ticket"></i><p title="Bộ nhớ trong">@Html.DisplayFor(model => model.StorageName)</p></li>
                         </ul>
                         <a class="table-view-detail-btn1">Xem chi tiết thông số kỹ thuật</a>
                     </div>
@@ -124,11 +103,6 @@
                             <img class="active" src="~/images/slider-samsung-a23-1.jpg" />
                             <i class="fa-solid fa-check"></i>
                             <p>Xanh</p>
-                        </div>
-                        <div class="product-color-img">
-                            <img src="~/images/slider-samsung-a23-6.jpg" />
-                            <i class="fa-solid fa-check"></i>
-                            <p>Đen</p>
                         </div>
                     </div>
                     <div class="product-discount">
@@ -200,51 +174,26 @@
         <div class="container">
             <div class="paramNews-content">
                 <div class="paramNews-content-left">
-                    <h3>Đặc điểm nổi bật của Samsung Galaxy A23</h3>
-                    <div class="paramNews-slider">
-                        <div class="paramNews-slider-content">
-                            <img src="~/images/paramNews-slider1.jpg" />
-                            <img src="~/images/paramNews-slider2.jpg" />
-                            <img src="~/images/paramNews-slider3.jpg" />
-                            <img src="~/images/paramNews-slider4.jpg" />
-                            <img src="~/images/paramNews-slider5.jpg" />
-                            <img src="~/images/paramNews-slider6.jpg" />
-                            <img src="~/images/paramNews-slider7.jpg" />
-                            <img src="~/images/paramNews-slider8.jpg" />
-                            <img src="~/images/paramNews-slider9.jpg" />
-                        </div>
-                        <div class="paramNews-dots">
-                            <ul>
-                                <li class="active"></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <h3>Đánh giá chi tiết Samsung Galaxy A23</h3>
-                    <p>Chiến thần smartphone tầm trung gọi tên Samsung Galaxy A23 5G với những tính năng đột phá từ màn hình 120Hz mượt mà, 4 camera 50MP cho đến hiệu năng “khủng” Snapdragon 695, sẵn sàng cùng bạn khai mở tiềm lực công nghệ tối ưu để tận hưởng cuộc sống tiện lợi và thông minh.</p><br />
+                    <h3>Đặc điểm nổi bật của @Html.DisplayFor(model => model.ProName)</h3>
+                    @Html.Action("ProductParamSliderPartialView","Product")
+                    <h3>@Html.DisplayFor(model => model.ProDescriptionTitle)</h3>
+                    <p>Chiến thần smartphone tầm trung gọi tên @Html.DisplayFor(model => model.ProName) với những tính năng đột phá từ màn hình 120Hz mượt mà, 4 camera 50MP cho đến hiệu năng “khủng” Snapdragon 695, sẵn sàng cùng bạn khai mở tiềm lực công nghệ tối ưu để tận hưởng cuộc sống tiện lợi và thông minh.</p><br />
                     <img src="~/images/paramNews-A23-1.jpg" />
                     <div class="expand-button">
                         <button class="expand-btn2">Đọc thêm <i class="fa-solid fa-angle-down"></i></button>
                     </div>
                     <div class="expand-content">
                         <h3>Tốc độ với kết nối 5G</h3><br />
-                        <p>Mở ra kỉ nguyên Internet tốc độ, Samsung Galaxy A23 5G tích hợp sẵn công nghệ kết nối nhanh nhất hiện nay. Samsung A23 5G là một trong những đại diện hiếm hoi trong phân khúc sở hữu 5G. Tốc độ 5G sẽ giúp bạn làm chủ cuộc chơi dễ dàng. Mọi tương tác, kết nối trực tuyến đều diễn ra trong chớp mắt. Bạn sẽ trải nghiệm được sự khác biệt từ những điều nhỏ nhất, tải dữ liệu, chia sẻ hay phát trực tuyến Youtube, xem phim, chiến game cực đã với độ phản hồi gần như tuyệt đối.</p><br />
+                        <p>Mở ra kỉ nguyên Internet tốc độ, @Html.DisplayFor(model => model.ProName) tích hợp sẵn công nghệ kết nối nhanh nhất hiện nay. @Html.DisplayFor(model => model.ProName) là một trong những đại diện hiếm hoi trong phân khúc sở hữu 5G. Tốc độ 5G sẽ giúp bạn làm chủ cuộc chơi dễ dàng. Mọi tương tác, kết nối trực tuyến đều diễn ra trong chớp mắt. Bạn sẽ trải nghiệm được sự khác biệt từ những điều nhỏ nhất, tải dữ liệu, chia sẻ hay phát trực tuyến Youtube, xem phim, chiến game cực đã với độ phản hồi gần như tuyệt đối.</p><br />
                         <img src="~/images/paramNews-A23-3.jpg" />
                         <h3>Chiến thần hiệu năng đích thực</h3><br />
                         <p>Không chỉ có kết nối trực tuyến nhanh, mà <span><a href="ProductCategory">điện thoại</a></span> còn mượt mà với Snapdragon 695. Một bộ vi xử lý siêu mạnh trong phân khúc cho khả năng xử lý vượt trội. Snapdragon 695 cũng được tối ưu khá đầy đủ cho các tựa game hot nhất hiện nay, đảm bảo trải nghiệm những tùy chỉnh “xịn sò”, mang tới không gian gaming hoàn hảo. Sự đồng hành cùng 4GB RAM và 128GB ROM còn cho bạn lưu trữ thoải mái. Đồng thời, bạn có thể mở rộng thêm ROM đến 1TB thông qua thẻ microSD.</p><br />
                         <img src="~/images/paramNews-A23-2.jpg" />
                         <h3>Màn hình chưa bao giờ mượt đến thế</h3><br />
-                        <p>Mở ra loạt công nghệ tiên tiến, Samsung Galaxy A23 5G trở thành đại diện hoàn hảo trong phân khúc với màn hình chưa bao giờ gặp gỡ. <span>Samsung</span> đã trang bị màn hình 120Hz siêu mượt mà. Các thao tác chuyển cảnh hay gaming đều diễn ra nhanh chóng. Sự đầu tư cẩn thận này cho bạn trải nghiệm thật sự khác so với những sản phẩm trước đây. Chi tiết cũng được bảo đảm với hình ảnh chân thực, sống động, giúp bạn tận hưởng trọn vẹn thế giới đa sắc màu cùng độ phân giải FHD+ trên màn hình tràn viền Infinity-V 6.6 inch.</p><br />
+                        <p>Mở ra loạt công nghệ tiên tiến, @Html.DisplayFor(model => model.ProName) trở thành đại diện hoàn hảo trong phân khúc với màn hình chưa bao giờ gặp gỡ. <span>Samsung</span> đã trang bị màn hình 120Hz siêu mượt mà. Các thao tác chuyển cảnh hay gaming đều diễn ra nhanh chóng. Sự đầu tư cẩn thận này cho bạn trải nghiệm thật sự khác so với những sản phẩm trước đây. Chi tiết cũng được bảo đảm với hình ảnh chân thực, sống động, giúp bạn tận hưởng trọn vẹn thế giới đa sắc màu cùng độ phân giải FHD+ trên màn hình tràn viền Infinity-V 6.6 inch.</p><br />
                         <img src="~/images/paramNews-A23-4.jpg" />
                         <h3>Đẹp mọi góc với bộ 4 camera đột phá</h3><br />
-                        <p>Đột phá và tuyệt đỉnh hơn với bộ 4 camera chất lượng. Ảnh được chụp bởi Galaxy A23 5G sẽ giúp bạn hài lòng hoàn toàn với camera chính 50MP, có hỗ trợ chống rung OIS. Khả năng lấy nét nhanh, chuẩn xác, độ phân giải cao cho chất lượng cực tốt, đảm bảo các chi tiết sắc nét, sống động, dù chủ thể đang đứng yên hay di chuyển. Tự tin "pose" mọi dáng yêu thích vì chống rung OIS và cảm biến 50MP sẽ “cân” tất cả khung hình của bạn.</p><br />
+                        <p>Đột phá và tuyệt đỉnh hơn với bộ 4 camera chất lượng. Ảnh được chụp bởi @Html.DisplayFor(model => model.ProName) sẽ giúp bạn hài lòng hoàn toàn với camera chính 50MP, có hỗ trợ chống rung OIS. Khả năng lấy nét nhanh, chuẩn xác, độ phân giải cao cho chất lượng cực tốt, đảm bảo các chi tiết sắc nét, sống động, dù chủ thể đang đứng yên hay di chuyển. Tự tin "pose" mọi dáng yêu thích vì chống rung OIS và cảm biến 50MP sẽ “cân” tất cả khung hình của bạn.</p><br />
                         <p>Các camera còn lại cũng tối ưu để bạn thỏa sức sáng tạo cùng camera góc rộng 5MP, camera xóa phông 2MP hay chụp ảnh nghệ thuật cùng camera macro 2MP.</p><br />
                         <img src="~/images/paramNews-A23-5.jpg" />
                         <h3>Chống rung OIS - Quay video chuyên nghiệp trong tầm tay</h3><br />
@@ -254,25 +203,25 @@
                         <p>Mọi thứ bạn nhìn thấy đều có thể ghi lại một cách trọn vẹn, đầy đủ chi tiết với camera góc rộng 5MP, góc chụp đến 123 độ. Bạn sẽ không bỏ lỡ chi tiết nào ra khỏi khung hình. Camera phù hợp khi chụp nhóm đông người cùng bạn bè, người thân hoặc ghi lại thiên nhiên hùng vĩ hay kiến trúc đồ sộ trong những chuyến du lịch.</p><br />
                         <img src="~/images/paramNews-A23-7.jpg" />
                         <h3>Ảnh chân dung nổi bật</h3><br />
-                        <p>Bất cứ khi nào muốn nổi bật hơn, bạn hãy tận dụng camera xóa phông 2MP, cho phép điều chỉnh độ sâu trường ảnh trong mỗi lần bấm máy. Hãy thử Galaxy A23 5G tùy chỉnh hậu cảnh phù hợp để chủ thể tỏa sáng theo ý muốn. Bạn có thể chỉnh các hiệu ứng ánh nền phía sau là những ngôi sao hay bông tuyết, ảnh chân dung sẽ tương tự máy ảnh chuyên nghiệp.</p><br />
+                        <p>Bất cứ khi nào muốn nổi bật hơn, bạn hãy tận dụng camera xóa phông 2MP, cho phép điều chỉnh độ sâu trường ảnh trong mỗi lần bấm máy. Hãy thử @Html.DisplayFor(model => model.ProName) tùy chỉnh hậu cảnh phù hợp để chủ thể tỏa sáng theo ý muốn. Bạn có thể chỉnh các hiệu ứng ánh nền phía sau là những ngôi sao hay bông tuyết, ảnh chân dung sẽ tương tự máy ảnh chuyên nghiệp.</p><br />
                         <img src="~/images/paramNews-A23-8.jpg" />
                         <h3>Tự tin trong mọi khung hình selfie</h3><br />
-                        <p>Camera trước 8MP của Samsung Galaxy A23 5G sẽ giúp bạn tỏa sáng ở mọi khung hình selfie. Tối ưu làm đẹp AI, tự động điều chỉnh làn da, màu sắc phù hợp, để bạn rạng rỡ nhưng không phá đi nét nguyên thủy. Thêm độc đáo và thú vị khi Galaxy A23 5G có các hiệu ứng bokeh lung linh, để ảnh ấn tượng và chuyên nghiệp. Bạn sẽ cảm thấy thích selfie hơn trên Galaxy A23 5G với trọn bộ công nghệ ảnh từ Samsung.</p><br />
+                        <p>Camera trước 8MP của @Html.DisplayFor(model => model.ProName)sẽ giúp bạn tỏa sáng ở mọi khung hình selfie. Tối ưu làm đẹp AI, tự động điều chỉnh làn da, màu sắc phù hợp, để bạn rạng rỡ nhưng không phá đi nét nguyên thủy. Thêm độc đáo và thú vị khi Galaxy A23 5G có các hiệu ứng bokeh lung linh, để ảnh ấn tượng và chuyên nghiệp. Bạn sẽ cảm thấy thích selfie hơn trên @Html.DisplayFor(model => model.ProName) với trọn bộ công nghệ ảnh từ Samsung.</p><br />
                         <img src="~/images/paramNews-A23-9.jpg" />
                         <h3>Sắc màu cá tính, phù hợp Gen Z năng động</h3><br />
                         <p>Ghi dấu với bản sắc độc nhất của dòng <span>Samsung Galaxy A</span>, điện thoại có thiết kế liền mạch, cụm camera viền mỏng, tạo nên diện mạo không thể chối từ. Phần thân máy còn được trau chuốt tỉ mỉ cho từng chi tiết, để máy đạt độ hoàn thiện cao. Đồng thời, Samsung Galaxy A23 5G còn có hai phiên bản sắc màu đậm chất Gen Z năng động và hiện đại, bao gồm: Xanh Năng Động và Đen Cá Tính để bạn có thể thỏa sức thể hiện cá tính bản thân.</p><br />
                         <img src="~/images/paramNews-A23-10.jpg" />
                         <h3>Pin dùng thoải mái 2 ngày</h3><br />
-                        <p>Cỗ máy Galaxy A23 5G được hoạt động bền bỉ đến 2 ngày trong một lần sạc. Mang đến người dùng thời lượng pin lý tưởng để bạn trải nghiệm liền mạch, sử dụng thoải mái mọi tác vụ dành cho liên lạc, học tập hay giải trí. Một lợi thế để người dùng có cuộc sống năng động, tiện lợi. Chỉ cần sạc vào tối hôm trước, smartphone sẽ đồng hành cùng bạn cả ngày dài.</p><br />
+                        <p>Cỗ máy @Html.DisplayFor(model => model.ProName) được hoạt động bền bỉ đến 2 ngày trong một lần sạc. Mang đến người dùng thời lượng pin lý tưởng để bạn trải nghiệm liền mạch, sử dụng thoải mái mọi tác vụ dành cho liên lạc, học tập hay giải trí. Một lợi thế để người dùng có cuộc sống năng động, tiện lợi. Chỉ cần sạc vào tối hôm trước, smartphone sẽ đồng hành cùng bạn cả ngày dài.</p><br />
                         <img src="~/images/paramNews-A23-11.jpg" />
                         <h3>Sự hỗ trợ từ Game Booster, sẵn sàng cân team</h3><br />
-                        <p>Song hành cùng hiệu năng mạnh, màn hình 120Hz mượt mà, Samsung Galaxy A23 5G còn có sự xuất hiện của chế độ Game Booster. Tính năng cho phép bạn có trải nghiệm giao diện game chuyên biệt, điều hướng thân thiện. Đặc biệt nhất là khả năng tối ưu nhiệt lẫn pin, vừa đảm bảo trải nghiệm game liền mạch, không độ trễ, không gian game riêng tư, mà còn tiết kiệm pin lẫn thoải mái trong toàn bộ quá trình “chiến” game, sẵn sàng “cân” team dài lâu cùng đồng đội.</p><br />
+                        <p>Song hành cùng hiệu năng mạnh, màn hình 120Hz mượt mà, @Html.DisplayFor(model => model.ProName) còn có sự xuất hiện của chế độ Game Booster. Tính năng cho phép bạn có trải nghiệm giao diện game chuyên biệt, điều hướng thân thiện. Đặc biệt nhất là khả năng tối ưu nhiệt lẫn pin, vừa đảm bảo trải nghiệm game liền mạch, không độ trễ, không gian game riêng tư, mà còn tiết kiệm pin lẫn thoải mái trong toàn bộ quá trình “chiến” game, sẵn sàng “cân” team dài lâu cùng đồng đội.</p><br />
                         <img src="~/images/paramNews-A23-12.jpg" />
                         <h3>Âm thanh Dolby Atmos – giải trí sống động</h3>
-                        <p>Phần âm thanh của Galaxy A23 được nâng tầm khi bạn cắm tai nghe vào và tận hưởng chất âm từ công nghệ Dolby Atmos. Đây là công nghệ tái tạo âm thanh vòm, giúp bạn thưởng thức âm nhạc đa chiều 360 độ, cho mọi nội dung như diễn ra xung quanh.</p><br />
+                        <p>Phần âm thanh của @Html.DisplayFor(model => model.ProName) được nâng tầm khi bạn cắm tai nghe vào và tận hưởng chất âm từ công nghệ Dolby Atmos. Đây là công nghệ tái tạo âm thanh vòm, giúp bạn thưởng thức âm nhạc đa chiều 360 độ, cho mọi nội dung như diễn ra xung quanh.</p><br />
                         <img src="~/images/paramNews-A23-13.jpg" />
                         <h3>Bảo mật vân tay an toàn</h3><br />
-                        <p><span>Samsung A23</span> đảm bảo an toàn khi tích hợp cảm biến vân tay ngay nút nguồn. Thiết kế này cho phép smartphone đạt tính thẩm mỹ cao lẫn sự tiện lợi tối ưu cho người dùng. Chỉ cần bạn chạm vào nút nguồn, smartphone đã sẵn sàng cùng bạn để mở ra cả thế giới giải trí bất tận hay liên lạc, kết nối với mọi người.</p><br />
+                        <p><span>@Html.DisplayFor(model => model.ProName)</span> đảm bảo an toàn khi tích hợp cảm biến vân tay ngay nút nguồn. Thiết kế này cho phép smartphone đạt tính thẩm mỹ cao lẫn sự tiện lợi tối ưu cho người dùng. Chỉ cần bạn chạm vào nút nguồn, smartphone đã sẵn sàng cùng bạn để mở ra cả thế giới giải trí bất tận hay liên lạc, kết nối với mọi người.</p><br />
                         <img src="~/images/paramNews-A23-14.jpg" />
                     </div>
                 </div>
@@ -282,47 +231,47 @@
                         <table>
                             <tr>
                                 <td>Màn hình</td>
-                                <td>6.6 inch, PLS LCD, FHD+, 1080 x 2408 Pixels</td>
+                                <td>@Html.DisplayFor(model => model.Screen)</td>
                             </tr>
                             <tr>
                                 <td>Camera sau</td>
-                                <td>50.0 MP + 5.0 MP + 2.0 MP + 2.0 MP</td>
+                                <td>@Html.DisplayFor(model => model.Camera)</td>
                             </tr>
                             <tr>
                                 <td>Camera Selfie</td>
-                                <td>8.0 MP</td>
+                                <td>@Html.DisplayFor(model => model.CameraSelfie)</td>
                             </tr>
                             <tr>
                                 <td>RAM</td>
-                                <td>4 GB</td>
+                                <td>@Html.DisplayFor(model => model.RamName)</td>
                             </tr>
                             <tr>
                                 <td>Bộ nhớ trong</td>
-                                <td>128 GB</td>
+                                <td>@Html.DisplayFor(model => model.StorageName) GB</td>
                             </tr>
                             <tr>
                                 <td>CPU</td>
-                                <td>Snapdragon 695 5G</td>
+                                <td>@Html.DisplayFor(model => model.Cpu)</td>
                             </tr>
                             <tr>
                                 <td>Dung lượng pin</td>
-                                <td>5000 mAh</td>
+                                <td>@Html.DisplayFor(model => model.Battery)</td>
                             </tr>
                             <tr>
                                 <td>Thẻ sim</td>
-                                <td>2 - 2 Nano SIM</td>
+                                <td>@Html.DisplayFor(model => model.Sim)</td>
                             </tr>
                             <tr>
                                 <td>Hệ điều hành</td>
-                                <td>Android 12</td>
+                                <td>@Html.DisplayFor(model => model.OperatingSystem)</td>
                             </tr>
                             <tr>
                                 <td>Xuất xứ</td>
-                                <td>Việt Nam / Trung Quốc</td>
+                                <td>@Html.DisplayFor(model => model.Origin)</td>
                             </tr>
                             <tr>
                                 <td>Thời gian ra mắt</td>
-                                <td>2022</td>
+                                <td>@Html.DisplayFor(model => model.LaunchTime)</td>
                             </tr>
                         </table>
                         <div class="table-view-detail-btn2">
@@ -331,14 +280,14 @@
                         <div class="table-view-detail">
                             <div class="table-view-detail-content-wrapper">
                                 <div class="table-view-detail-content">
-                                    <h2>Chi tiết thông số kỹ thuật Samsung Galaxy A23<span id="table-view-detail-closed">X</span></h2>
-                                    <img src="~/images/slider-samsung-a23-1.jpg" />
+                                    <h2>Chi tiết thông số kỹ thuật @Html.DisplayFor(model => model.ProName)<span id="table-view-detail-closed">X</span></h2>
+                                    <img src="@Url.Content(Model.ProImage)" />
                                     <h3 class="table-view-detail-title">Thông tin hàng hóa</h3>
                                     <div class="table-view-detail-list">
                                         <ul>
                                             <li>Thương hiệu: Samsung</li>
-                                            <li>Xuất xứ: Việt Nam / Trung Quốc</li>
-                                            <li>Thời điểm ra mắt: 2022</li>
+                                            <li>Xuất xứ: @Html.DisplayFor(model => model.Origin)</li>
+                                            <li>Thời điểm ra mắt: @Html.DisplayFor(model => model.LaunchTime)</li>
                                             <li>Thời gian bảo hành (tháng): 12</li>
                                             <li>Hướng dẫn bảo quản: Để nơi khô ráo, nhẹ tay, dễ vỡ</li>
                                             <li>Hướng dẫn sử dụng: Xem trong sách hướng dẫn sử dụng</li>
@@ -369,7 +318,7 @@
                                         <table>
                                             <tr>
                                                 <td>Phiên bản CPU</td>
-                                                <td>Snapdragon 695 5G</td>
+                                                <td>@Html.DisplayFor(model => model.Cpu)</td>
                                             </tr>
                                             <tr>
                                                 <td>Số nhân</td>
@@ -386,7 +335,7 @@
                                         <table>
                                             <tr>
                                                 <td>RAM</td>
-                                                <td>4 GB</td>
+                                                <td>@Html.DisplayFor(model => model.RamName)</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -432,7 +381,7 @@
                                         <table>
                                             <tr>
                                                 <td>Bộ nhớ trong</td>
-                                                <td>128 GB</td>
+                                                <td>@Html.DisplayFor(model => model.StorageName)</td>
                                             </tr>
                                             <tr>
                                                 <td>Thẻ nhớ ngoài</td>
@@ -538,7 +487,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Loại SIM</td>
-                                                <td><a class="a-blue">2 Nano SIM</a></td>
+                                                <td><a class="a-blue">@Html.DisplayFor(model => model.Sim)</a></td>
                                             </tr>
                                             <tr>
                                                 <td>Hỗ trợ mạng</td>
@@ -563,7 +512,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Dung lượng pin</td>
-                                                <td>5000 mAh</td>
+                                                <td>@Html.DisplayFor(model => model.Battery)</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -576,7 +525,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Version</td>
-                                                <td>Android 12</td>
+                                                <td>@Html.DisplayFor(model => model.OperatingSystem)</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -598,48 +547,9 @@
                         </div>
                     </div>
                     <div class="paramNews-content-right-bottom">
-                        <h2>Tin tức về Samsung Galaxy A23</h2>
+                        <h2>Tin tức về @Html.DisplayFor(model => model.ProName)</h2>
                         <a>Xem tất cả</a>
-                        <div class="paramNews-content-right-bottom-news">
-                            <img src="~/images/Samsung-a23-new1.jpg" />
-                            <div class="news-title">
-                                <p>Mua Galaxy A23 5G tại FPT Shop, nhận combo quà liền tay</p>
-                                <a class="news-tag">Tin khuyến mãi</a>
-                                <a class="news-tag">Galaxy A23</a>
-                            </div>
-                        </div>
-                        <div class="paramNews-content-right-bottom-news">
-                            <img src="~/images/Samsung-a23-new2.jpg" />
-                            <div class="news-title">
-                                <p>Samsung ra mắt Galaxy A23 5G tại VN: Snapdragon 695, màn hình 120Hz, 4 camera 50MP, giá chỉ 6.69 triệu</p>
-                                <a class="news-tag">Tin mới</a>
-                                <a class="news-tag">Samsung Galaxy A 2022</a>
-                            </div>
-                        </div>
-                        <div class="paramNews-content-right-bottom-news">
-                            <img src="~/images/Samsung-a23-new3.jpg" />
-                            <div class="news-title">
-                                <p>FPT Shop tặng ưu đãi thiết thực cho chủ sở hữu Galaxy A23</p>
-                                <a class="news-tag">Tin khuyến mãi</a>
-                                <a class="news-tag">Khuyến mãi FPT Shop</a>
-                            </div>
-                        </div>
-                        <div class="paramNews-content-right-bottom-news">
-                            <img src="~/images/Samsung-a23-new4.jpg" />
-                            <div class="news-title">
-                                <p>Samsung Galaxy A23 và Galaxy A13 ra mắt với hệ thống 4 camera sau, pin 5000 mAh</p>
-                                <a class="news-tag">Tin mới</a>
-                                <a class="news-tag">Samsung A Series</a>
-                            </div>
-                        </div>
-                        <div class="paramNews-content-right-bottom-news">
-                            <img src="~/images/Samsung-a23-new5.jpg" />
-                            <div class="news-title">
-                                <p>Samsung Galaxy A23 5G lộ cấu hình: Màn hình 90Hz, chip Dimensity 700</p>
-                                <a class="news-tag">Tin mới</a>
-                                <a class="news-tag">Điện thoại 5G</a>
-                            </div>
-                        </div>
+                        @Html.Action("ProductNewsPartialView","Product")
                     </div>
                 </div>
             </div>
@@ -647,89 +557,17 @@
     </section>
     <section class="questions">
         <div class="container">
-            <div class="accordion">
-                <h2>Câu hỏi thường gặp</h2>
-                <div class="accordion-item">
-                    <div class="label">
-                        <i class="fa-solid fa-question"></i>
-                        <h3>Samsung Galaxy A23 5G có cảm biến vân tay không?</h3>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Samsung Galaxy A23 5G có cảm biến vân tay ngay nút nguồn, giúp mở khóa nhanh chóng, chỉ cần chạm nút nguồn, máy đã sẵn sàng để bạn trải nghiệm.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="label">
-                        <i class="fa-solid fa-question"></i>
-                        <h3>Pin Samsung Galaxy A23 5G sử dụng trong bao lâu?</h3>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Samsung Galaxy A23 5G có viên pin lớn 5.000mAh, cho phép bạn sử dụng cả ngày dài. Nếu chỉ dùng cơ bản, có thể kéo dài đến 2 ngày.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="label">
-                        <i class="fa-solid fa-question"></i>
-                        <h3>Samsung Galaxy A23 5G chơi game được không?</h3>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Samsung Galaxy A23 5G sở hữu con chip mạnh Snapdragon 695, đi kèm 4GB RAM, màn 120Hz cùng chế độ Game Booster mang tới khả năng chơi game tốt cho người dùng.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="label">
-                        <i class="fa-solid fa-question"></i>
-                        <h3>Camera Samsung Galaxy A23 5G có chống rung không?</h3>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Camera Samsung Galaxy A23 5G có chống rung OIS, mang tới các tấm ảnh/video mượt mà và sắc nét trong nhiều điều kiện, ngay cả khi bạn hoặc chủ thể đang di chuyển.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="label">
-                        <i class="fa-solid fa-question"></i>
-                        <h3>Chất lượng màn hình Samsung Galaxy A23 5G như thế nào?</h3>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Samsung Galaxy A23 5G có màn hình tràn viền Infinity-V, kích thước lớn 6.6 inch, FHD+ cho chất lượng sắc nét và thao tác thoải mái. Đi kèm là tần số quét vượt trội nhất phân khúc 120hz, cho phản hồi siêu nhanh trong các tác vụ chuyển cảnh, lướt, vuốt.</p>
-                    </div>
-                </div>
-            </div>
+           @Html.Action("ProductQuestionPartialView","Product")
         </div>
     </section>
     <section class="advisory">
         <div class="container">
             <div class="advisory-content">
                 <div class="advisory-title">
-                    <h2>Hướng dẫn & tư vấn về Samsung Galaxy A23</h2>
+                    <h2>Hướng dẫn & tư vấn về @Html.DisplayFor(model => model.ProName)</h2>
                     <a>Xem tất cả</a>
                 </div>
-                <div class="advisory-news">
-                    <div class="advisory-new">
-                        <img src="~/images/advisory-new1.jpg" />
-                        <p>Tìm mua điện thoại pin trâu giá rẻ dưới 5 triệu tốt nhất 2023? Đừng bỏ qua 5 gợi ý này</p>
-                        <span>Đánh Giá - Tư Vấn</span>
-                        <span>toplist</span>
-                    </div>
-                    <div class="advisory-new">
-                        <img src="~/images/advisory-new2.jpg" />
-                        <p>Tìm mua điện thoại pin trâu giá rẻ dưới 5 triệu tốt nhất 2023? Đừng bỏ qua 5 gợi ý này</p>
-                        <span>Đánh Giá - Tư Vấn</span>
-                        <span>toplist</span>
-                    </div>
-                    <div class="advisory-new">
-                        <img src="~/images/advisory-new3.jpg" />
-                        <p>Tìm mua điện thoại pin trâu giá rẻ dưới 5 triệu tốt nhất 2023? Đừng bỏ qua 5 gợi ý này</p>
-                        <span>Đánh Giá - Tư Vấn</span>
-                        <span>toplist</span>
-                    </div>
-                    <div class="advisory-new">
-                        <img src="~/images/advisory-new4.jpg" />
-                        <p>Tìm mua điện thoại pin trâu giá rẻ dưới 5 triệu tốt nhất 2023? Đừng bỏ qua 5 gợi ý này</p>
-                        <span>Đánh Giá - Tư Vấn</span>
-                        <span>toplist</span>
-                    </div>
-                </div>
+                @Html.Action("ProductAdvisoryPartialView", "Product")
             </div>
         </div>
     </section>

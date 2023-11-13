@@ -32,6 +32,7 @@ namespace DuAnFptShop.Models.ViewModel
         public Nullable<int> ScreenSizeID { get; set; }
         public string ProImage { get; set; }
         public string ProDescriptionTitle { get; set; }
+        public string ColorImage { get; set; }
 
 
         //bảng ram
@@ -49,5 +50,16 @@ namespace DuAnFptShop.Models.ViewModel
         //bảng product slider
         public int ProductSliderID { get; set; }
         public string ProductSliderImage { get; set; }
+
+        //bảng product question
+        public int QuestionID { get; set; }
+        public string QuestionTitle { get; set; }
+        public string Answer { get; set; }
+
+        //bảng product news
+        public int ProductNewsID { get; set; }
+        public string NewsTitle { get; set; }
+        public string NewsImage { get; set; }
+        public string NewsTags { get; set; }
     }
 }

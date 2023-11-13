@@ -16,10 +16,10 @@ namespace DuAnFptShop.Models
     {
         public int ProductNewsID { get; set; }
         public string NewsTitle { get; set; }
-        public string NewsContent { get; set; }
         public string NewsImage { get; set; }
         public string NewsTags { get; set; }
         public Nullable<int> ProductID { get; set; }
+        public string TypeNews { get; set; }
     
         public virtual Product Product { get; set; }
     }

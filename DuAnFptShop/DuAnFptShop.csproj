@@ -213,7 +213,7 @@
       <DependentUpon>FPTSHOP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModel\DetailProduct.cs" />
-    <Compile Include="Models\ViewModel\ProductViewModel.cs" />
+    <Compile Include="Models\ViewModel\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,9 +313,14 @@
     <Content Include="Views\Home\ProductCategory.cshtml" />
     <Content Include="Views\Shared\_MasterLayout1.cshtml" />
     <Content Include="Views\Home\ShopCart.cshtml" />
-    <Content Include="Views\Home\OutstandingList.cshtml" />
-    <Content Include="Views\Home\HotDealList.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Product\ProductSliderPartialView.cshtml" />
+    <Content Include="Views\Product\ProductQuestionPartialView.cshtml" />
+    <Content Include="Views\Product\ProductNewsPartialView.cshtml" />
+    <Content Include="Views\Product\ProductAdvisoryPartialView.cshtml" />
+    <Content Include="Views\Home\HotDealListPartialView.cshtml" />
+    <Content Include="Views\Home\OutstandingListPartialView.cshtml" />
+    <Content Include="Views\Product\ProductParamSliderPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,7 +329,6 @@
     <Folder Include="images\" />
     <Folder Include="Views\Carts\" />
     <Folder Include="Views\Category\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -127,7 +127,7 @@
     overflow: hidden;
 }
 
-.product-slider {
+/*.product-slider {
     width: 100%;
     position: relative;
     margin-top: 20px;
@@ -198,13 +198,13 @@
     border-radius:20px;
     transition:1s;
     cursor:pointer;
-}
-
+}*/
+/*
 .dots ul li.active{
     background-color:#D1281E;
     width:30px;
 }
-
+*/
 /*-------------------------------------product slider feature-----------------------------------*/
 
 .product-slider-feature{
@@ -220,7 +220,7 @@
 }
 
 .product-slider-feature ul li{
-    margin:10px 20px;
+    margin:30px 20px;
 }
 
 .product-slider-feature ul li:hover a, .product-slider-feature ul li:hover p{
@@ -728,7 +728,7 @@
     padding:20px;
 }
 
-.paramNews-slider {
+/*.paramNews-slider {
     width: 100%;
     position: relative;
 }
@@ -766,7 +766,7 @@
 
 .paramNews-dots ul li.active{
     background-color:#CD1817;
-}
+}*/
 /*-----------------------------------------*/
 
 .paramNews-content-left h3 {
@@ -1097,7 +1097,7 @@
 }
 
 .paramNews-content-right-bottom h2{
-    font-size:20px;
+    font-size:16px;
     color:#212529;
     font-weight:800;
     display:inline-block;
@@ -1106,7 +1106,7 @@
 .paramNews-content-right-bottom > a{
     display:inline-block;
     color:#0168FA;
-    margin-left:90px;
+    margin-left:5px;
     font-size:14px;
     position:relative;
     cursor:pointer;
@@ -1129,7 +1129,7 @@
     transform:scaleX(1);
 }
 
-.paramNews-content-right-bottom-news{
+/*.paramNews-content-right-bottom-news{
     display:flex;
     padding:10px 0;
 }
@@ -1164,7 +1164,7 @@
     color:#343a40;
     border-radius:5px;
     background-color:#dee2e6;
-}
+}*/
 
 /*--------------------------------------------------questions-----------------------------------------------------*/
 
@@ -1173,7 +1173,7 @@
     background-color: #F8F9FA;
 }
 
-.accordion {
+/*.accordion {
     width: 100%;
     padding: 20px;
     background-color: #FFFFFF;
@@ -1270,7 +1270,7 @@
     font-size: 30px;
     cursor: pointer;
     color: #444B52;
-}
+}*/
 /*-----------------------------------------advisory----------------------------------------*/
 .advisory {
     width: 100%;
@@ -1319,7 +1319,7 @@
     transform:scaleX(1);
 }
 
-.advisory-news{
+/*.advisory-news{
     display:flex;
 
 }
@@ -1359,4 +1359,4 @@
 .advisory-new span:hover{
     background-color: #dee2e6;
     color: #343a40;
-}
+}*/
