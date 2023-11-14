@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuAnFptShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,7 @@ namespace DuAnFptShop.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Categories
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private FPTSHOPEntities2 db = new FPTSHOPEntities2();
+       
     }
 }

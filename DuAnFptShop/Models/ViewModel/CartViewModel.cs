@@ -9,12 +9,8 @@ namespace DuAnFptShop.Models.ViewModel
     public class CartViewModel
     {
 
-        //bảng OrderItem
-        [Key]
-        public int OrderItemID { get; set; }
-        public Nullable<int> Quantity { get; set; }
-
         //bảng product detail
+        [Key]
         public int ProductDetailID { get; set; }
         public Nullable<decimal> NewPrice { get; set; }
         public Nullable<decimal> OldPrice { get; set; }
@@ -47,6 +43,15 @@ namespace DuAnFptShop.Models.ViewModel
         public string ReceiverPhone { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<decimal> LastPrice { get; set; }
+
+        //bảng OrderItem
+        public int OrderItemID { get; set; }
+        public Nullable<int> Quantity { get; set; }
+
+        public decimal FinalPrice()
+        {
+            return (decimal)Quantity * (decimal)NewPrice;
+        }
 
     }
 }

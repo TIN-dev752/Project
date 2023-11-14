@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DuAnFptShop.Models;
+using DuAnFptShop.Models.ViewModel;
 
 namespace DuAnFptShop.Areas.Admin.Controllers
 {

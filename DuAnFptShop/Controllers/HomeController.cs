@@ -149,10 +149,31 @@ namespace DuAnFptShop.Controllers
             List<OrderItem> orderItems = db.OrderItems.ToList();
             List<CartViewModel> cartViewModel = orderItems.Select(orderItem => new CartViewModel
             { 
+                //bảng productdetail
                 ProductDetailID = (int)orderItem.ProductDetailID,
-                NewPrice = orderItem.Ne
+                NewPrice = orderItem.ProductDetail.NewPrice,
+                OldPrice= orderItem.ProductDetail.OldPrice,
+                ColorImage = orderItem.ProductDetail.ColorImage,
+
+                //bảng product
+                ProductID = (int)orderItem.ProductDetail.ProductID,
+                ProName = orderItem.ProductDetail.Product.ProName,
+                ProImage = orderItem.ProductDetail.Product.ProImage,
+
+                //bảng orderitem
+                Quantity = orderItem.Quantity,
+
+                //bảng productdiscount
+                DiscountType = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountType,
+                DiscountValue = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountID,
+                DiscountDecription = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountDecription,
+
+                //bảng Order
+                TotalPrice = orderItem.Order.TotalPrice,
+                LastPrice = orderItem.Order.LastPrice,
+
             }).ToList();
-            return View();
+            return View(cartViewModel);
         }
         
     }

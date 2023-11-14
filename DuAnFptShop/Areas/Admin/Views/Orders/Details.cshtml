@@ -39,24 +39,59 @@
             line-height: 50px;
         }
 
-    .control-label {
-        width: 100%;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+.body{
+    width:100%;
+    background-color:white;
+    padding:20px 0;
+}
 
-    dt, dd {
-        padding: 5px 20px;
-    }
+.Product-info{
+    width:100%;
+    display:flex;
+}
 
-    dd {
-        border-bottom: 1px solid #9B9D9E;
-    }
+.Product-info .Product-img{
+    padding:20px;
+    border:1px solid #CFD5DB;
+    border-radius:10px;
+}
+
+.Product-info .info{
+    margin-left:20px;
+}
+
+.Product-info .info h2{
+    color:#CD5C5C;
+    padding-bottom:10px;
+}
+
+.body table{
+    width:100%;
+    margin-top:20px;
+}
+
+.body table tr{
+    width:100%;
+}
+
+.body table tr th{
+    border:1px solid #CFD5DB;
+    padding:10px;
+}
+
+.body table tr td{
+    border:1px solid #CFD5DB;
+    padding:10px;
+}
 
     .btn-default {
         border: 1px solid #CFD5DB;
         border-radius: 5px;
     }
+
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
 
         .btn-default a {
             text-decoration: none;
@@ -75,16 +110,34 @@
     </div>
     <div class="body">
         <div class="container">
+            <div class="Product-info">
+                <div class="Product-img">
+                    <img src="@Url.Content(Model.OrderItems.FirstOrDefault().ProductDetail.Product.ProImage)" />
+                </div>
+                <div class="info">
+                    <h2>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</h2>
+                    <h5>MÔ TẢ TỔNG QUÁT SẢN PHẨM </h5>
+                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProDecription)</p>
+                    <h5>NHÓM SẢN PHẨM</h5>
+                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</p>
+                </div>
+            </div>
             <table>
                 <tr>
                     <th>Tên sản phẩm</th>
+                    <th>Thương hiệu</th>
                     <th>Màu sắc</th>
                     <th>Số lượng</th>
                     <th>Tổng tiền</th>
                     <th>Thành Tiền</th>
                 </tr>
                 <tr>
-                    <td>@Html.DisplayFor(model => model)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Color.ColorName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().Quantity)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().ProductDetail.OldPrice)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().Quantity * Model.OrderItems.FirstOrDefault().ProductDetail.NewPrice)</td>
                 </tr>
             </table>
         </div>

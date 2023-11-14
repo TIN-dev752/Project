@@ -158,9 +158,13 @@
                             </div>
                         </div>*@
                     <div class="click-to-buy">
-                        <button><span>MUA NGAY</span><br /> Giao hàng miễn phí hoặc nhận tại shop</button>
-                        <button><span>TRẢ GÓP 0%</span><br /> Duyệt nhanh qua điện thoại</button>
-                        <button><span>TRẢ GÓP QUA THẺ</span><br /> Visa,Master Card, JCB, AMEX</button>
+                         @*@using (Html.BeginForm("AddToCart", "Carts", new { id = Model.ProductDetailID }, FormMethod.Post))
+                         {
+                             <a> <input type="submit" value="MUA NGAY" /></a>
+                         }*@
+                        <a href="@Html.Action("AddToCart", "Carts", new {id = Model.ProductDetailID})"><input type="button" value="MUA NGAY" /></a>
+                        <a><input type="button" value="TRẢ GÓP 0%" /></a>
+                        <a><input type="button" value="TRẢ GÓP QUA THẺ"/></a>
                     </div>
                     <div class="located">
                         <p>Gọi <span>1800-6601</span> để được tư vấn mua hàng (Miễn phí)</p>

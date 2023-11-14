@@ -88,9 +88,9 @@
         border-radius: 5px;
     }
 
-    .btn-default:hover{
-        background-color:powderblue;
-    }
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
 
         .btn-default a {
             text-decoration: none;
@@ -112,56 +112,52 @@
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProName)
+                        Hình sản phẩm
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Category.CateName)
+                        Tên sản phẩm
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProDecription)
+                        Mô tả tổng quát
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Screen)
+                        Màn hình
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Camera)
+                        Camera trước
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CameraSelfie)
+                        Camera selfie
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Cpu)
+                        Cpu
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Battery)
+                        Dung lượng Pin
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Sim)
+                        Sim
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.OperatingSystem)
+                        Hệ điều hành
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Origin)
+                        Xuất xứ
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.LaunchTime)
+                        Năm sản xuất
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProImage)
+                        Thương hiệu
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PerformanceBattery.Performance)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ScreenSize.Size)
-                    </th>
-                    <th></th>
                 </tr>
 
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            <img src="@Url.Content(item.ProImage)" />
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProName)
                         </td>
@@ -196,17 +192,14 @@
                             @Html.DisplayFor(modelItem => item.LaunchTime)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ProImage)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Category.CateName)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.PerformanceBattery.Performance)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ScreenSize.Size)
-                        </td>
+                        </td>*@
                         <td>
                             <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID }) </button>
                             <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }) </button>

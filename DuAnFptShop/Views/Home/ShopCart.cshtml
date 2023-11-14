@@ -1,4 +1,6 @@
-﻿
+﻿@model IEnumerable<DuAnFptShop.Models.ViewModel.CartViewModel>
+
+
 @{
     ViewBag.Title = "ShopCart";
     Layout = "~/Views/Shared/_MasterLayout1.cshtml";
@@ -40,63 +42,66 @@
                     <div class="shopping-items-content-wrapper">
                         <h2 id="number-product">Có 1 sản phẩm trong giỏ hàng</h2>
                         <div class="product-info">
-                            <div class="product-info-left">
-                                <img src="~/images/Samsung-a23-xanh-shopcart.jpg" />
-                                <input type="checkbox" checked />
-                            </div>
-                            <div class="product-info-right">
-                                <div class="product-info-right-top">
-                                    <h2>Điện thoại di động Samsung Galaxy A23 5G Xanh - A236</h2>
-                                    <i class="fa-solid fa-trash"></i>
+                            @foreach (var item in Model)
+                            {
+                                <div class="product-info-left">
+                                    <img src="@Url.Content(item.ProImage)" />
+                                    <input type="checkbox" checked />
                                 </div>
-                                <div class="product-info-right-bottom">
-                                    <div class="color">
-                                        <div class="select-btn">
-                                            <p>Màu sắc</p>
-                                            <span class="btn-text">Xanh <i class="fa-solid fa-chevron-down"></i></span>
+                                <div class="product-info-right">
+                                    <div class="product-info-right-top">
+                                        <h2>Điện thoại di động @Html.DisplayFor(modelitem => item.ProName)</h2>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </div>
+                                    <div class="product-info-right-bottom">
+                                        <div class="color">
+                                            <div class="select-btn">
+                                                <p>Màu sắc</p>
+                                                <span class="btn-text">@Html.DisplayFor(modelitem => item.ColorName) <i class="fa-solid fa-chevron-down"></i></span>
+                                            </div>
+                                            <ul class="color-options">
+                                                <li class="color-option">
+                                                    <img src="~/images/Samsung-a23-bac-color.jpg" />
+                                                    <p>Bạc</p>
+                                                </li>
+                                                @*<li class="color-option">
+                                                    <img src="~/images/Samsung-a23-den-color.jpg" />
+                                                    <p>Đen</p>
+                                                </li>
+                                                <li class="color-option">
+                                                    <img src="~/images/Samsung-a23-xanh-color.jpg" />
+                                                    <p>Xanh</p>
+                                                </li>*@
+                                            </ul>
                                         </div>
-                                        <ul class="color-options">
-                                            <li class="color-option">
-                                                <img src="~/images/Samsung-a23-bac-color.jpg" />
-                                                <p>Bạc</p>
-                                            </li>
-                                            @*<li class="color-option">
-                                                <img src="~/images/Samsung-a23-den-color.jpg" />
-                                                <p>Đen</p>
-                                            </li>
-                                            <li class="color-option">
-                                                <img src="~/images/Samsung-a23-xanh-color.jpg" />
-                                                <p>Xanh</p>
-                                            </li>*@
-                                        </ul>
-                                    </div>
-                                    <div class="quantity">
-                                        <p>Số lượng</p>
-                                        <button class="minus"><i class="fa-solid fa-minus"></i></button>
-                                        <input type="text" name="amount" id="amount" value="1" />
-                                        <button class="plus"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                    <div class="price">
-                                        <p class="newPrice">5.190.000đ</p>
-                                        <p class="oldPrice">5.990.000đ</p>
+                                        <div class="quantity">
+                                            <p>Số lượng</p>
+                                            <button class="minus"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="text" name="amount" id="amount" value="1" />
+                                            <button class="plus"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                        <div class="price">
+                                            <p class="newPrice">@String.Format("{0:N0}", item.NewPrice)đ</p>
+                                            <p class="oldPrice">@String.Format("{0:N0}", item.OldPrice)đ</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <h3>Khuyến mãi theo sản phẩm</h3>
-                        <div class="promotion">
-                            <div class="promotion-content">
-                                <div class="promotion-title">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <h3>Giảm ngay 800,000đ</h3>
+                                <h3>Khuyến mãi theo sản phẩm</h3>
+                                <div class="promotion">
+                                    <div class="promotion-content">
+                                        <div class="promotion-title">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <h3>Giảm ngay 800,000đ</h3>
+                                        </div>
+                                        @*<div class="promotion-extra">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                            <h3>Tặng máy ép chậm Kalite trị giá 3.000.000đ <a href="">Xem chi tiết</a></h3>
+                                            <p>Không áp dụng đồng thời với các khuyến mãi sau:</p>
+                                            <p>- Giảm ngay 800,000đ</p>
+                                        </div>*@
+                                    </div>
                                 </div>
-                                <div class="promotion-extra">
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                    <h3>Tặng máy ép chậm Kalite trị giá 3.000.000đ <a href="">Xem chi tiết</a></h3>
-                                    <p>Không áp dụng đồng thời với các khuyến mãi sau:</p>
-                                    <p>- Giảm ngay 800,000đ</p>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <div class="shopping-items-content-wrapper">
@@ -240,39 +245,39 @@
                                 </div>
                                 <div class="methods">
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod1" name="payment"/>
+                                        <input type="radio" id="paymentMethod1" name="payment" />
                                         <img src="~/images/ThanhToanKhiNhanHang.png" />
                                         <p>Thanh toán khi nhận hàng</p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod2" name="payment"/>
+                                        <input type="radio" id="paymentMethod2" name="payment" />
                                         <img src="~/images/vnpay.png" />
                                         <p>
                                             Thanh toán bằng thẻ ATM nội địa (Qua VNPay)
                                         </p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod3" name="payment"/>
+                                        <input type="radio" id="paymentMethod3" name="payment" />
                                         <img src="~/images/card.png" />
                                         <p>Thanh toán bằng thẻ quốc tế Visa, Master, JCB, AMEX</p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod4" name="payment"/>
+                                        <input type="radio" id="paymentMethod4" name="payment" />
                                         <img src="~/images/zalopay.png" />
                                         <p>Thanh toán bằng ví ZaloPay</p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod5" name="payment"/>
+                                        <input type="radio" id="paymentMethod5" name="payment" />
                                         <img src="~/images/card.png" />
                                         <p>Thanh toán qua Kredivo</p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod6" name="payment"/>
+                                        <input type="radio" id="paymentMethod6" name="payment" />
                                         <img src="~/images/card.png" />
                                         <p>Trả góp qua nhà tài chính</p>
                                     </div>
                                     <div class="method">
-                                        <input type="radio" id="paymentMethod7" name="payment"/>
+                                        <input type="radio" id="paymentMethod7" name="payment" />
                                         <img src="~/images/card.png" />
                                         <p>Trả góp qua thẻ tín dụng</p>
                                     </div>
@@ -300,10 +305,10 @@
                                 <p>Giảm giá khuyến mãi:</p>
                                 <p>-800.000đ</p>
                             </div>
-                            <div class="pay-content-body-left-1">
-                                <p>Giảm giá voucher:</p>
-                                <p>0đ</p>
-                            </div>
+                            @*<div class="pay-content-body-left-1">
+                                    <p>Giảm giá voucher:</p>
+                                    <p>0đ</p>
+                                </div>*@
                         </div>
                         <div class="pay-content-body-right">
                             <div class="pay-content-body-right-1">
@@ -316,6 +321,6 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     <script src="~/Scripts/ShopCartJS.js"></script>
 </body>
