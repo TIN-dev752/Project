@@ -108,10 +108,8 @@
         <div class="form-group">
             <div class="container">
                 <div class="form-group-content">
-                    @*@Html.LabelFor(model => model.CateID, htmlAttributes: new { @class = "control-label col-md-2" })*@
                     <label for="CateID" class="control-label">Mã loại</label>
                     <div class="Cate-text">
-                        @*@Html.EditorFor(model => model.CateID, new { htmlAttributes = new { @class = "form-control" } })*@
                         <input id="CateID" name="CateID" type="text" class="Cate-ID" />
                         @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
                     </div>
@@ -121,10 +119,8 @@
         <div class="form-group">
             <div class="container">
                 <div class="form-group-content">
-                    @*@Html.Label("Tên loại", htmlAttributes: new { @class = "control-label col-md-2" })*@
                     <label for="CateID" class="control-label col-md-2">Tên loại</label>
                     <div class="Cate-text">
-                        @*@Html.EditorFor(model => model.CateName, new { htmlAttributes = new { @class = "form-control" } })*@
                         <input id="CateName" name="CateName" type="text" class="Cate-Name" />
                         @Html.ValidationMessageFor(model => model.CateName, "", new { @class = "text-danger" })
                     </div>

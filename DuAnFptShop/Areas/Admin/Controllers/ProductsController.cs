@@ -128,6 +128,36 @@ namespace DuAnFptShop.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ProductSliderPartialView(int id)
+        {
+            var item = db.ProductSliders.Where(q => q.ProductID == id).Take(5).ToList();
+            return PartialView(item);
+        }
+
+        public ActionResult ProductParamSliderPartialView(int id)
+        {
+            var item = db.ProductSliders.Where(q => q.ProductID == id).OrderBy(q => q.ProductSliderID).Skip(5).Take(6).ToList();
+            return PartialView(item);
+        }
+
+        public ActionResult ProductNewsPartialView(int id)
+        {
+            var item = db.ProductNews.Where(q => q.ProductID == id && q.TypeNews == "Tin tức").ToList();
+            return PartialView(item);
+        }
+
+        public ActionResult ProductAdvisoryPartialView(int id)
+        {
+            var item = db.ProductNews.Where(q => q.ProductID == id && q.TypeNews == "Hướng dẫn tư vấn").ToList();
+            return PartialView(item);
+        }
+
+        public ActionResult ProductQuestionPartialView(int id)
+        {
+            var item = db.ProductQuestions.Where(q => q.ProductID == id).ToList();
+            return PartialView(item);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

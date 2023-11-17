@@ -61,5 +61,13 @@ namespace DuAnFptShop.Models.ViewModel
         public string NewsTitle { get; set; }
         public string NewsImage { get; set; }
         public string NewsTags { get; set; }
+
+        //bảng product discount
+        public int DiscountID { get; set; }
+        public string DiscountType { get; set; }
+        public Nullable<decimal> DiscountValue { get; set; }
+        public string DiscountDecription { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
     }
 }

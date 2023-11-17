@@ -30,15 +30,7 @@
     <div class="product-top">
         <div class="container">
             <div class="product-top-content">
-                <h1>@Html.DisplayFor(model => model.ProName) <span>(No.00842520)</span></h1>
-                @*<div class="product-rating">
-                        <ul>
-                            <li><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></li>
-                            <li><a href="">0 Đánh giá</a></li>
-                            <li><a href="">0 Hỏi & Đáp</a></li>
-                            <li><a href=""><i class="fa-solid fa-circle-plus"></i> So sánh</a></li>
-                        </ul>
-                    </div>*@
+                <h1>@Html.DisplayFor(model => model.ProName)</h1>
             </div>
         </div>
     </div>
@@ -86,23 +78,12 @@
                             <p class="newPrice">@String.Format("{0:N0}", Model.NewPrice)<span>đ</span></p>
                             <p class="oldPrice">@String.Format("{0:N0}", Model.OldPrice)<span>đ</span></p>
                         </div>
-                        @*<div class="product-price-right">
-                                <p>Trả góp chỉ từ </p>
-                                <p>711.000₫/tháng</p>
-                            </div>*@
                     </div>
-                    @*<div class="product-reward-point">
-                            <span><i class="fa-solid fa-f"></i></span>
-                            <p>
-                                +1.222 điểm thưởng dự kiến
-                            </p>
-                            <i class="fa-solid fa-circle-info"></i>
-                        </div>*@
                     <div class="select-color">
                         <div class="product-color-img">
-                            <img class="active" src="~/images/slider-samsung-a23-1.jpg" />
+                            <img class="active" src="@Url.Content(Model.ProImage)" />
                             <i class="fa-solid fa-check"></i>
-                            <p>Xanh</p>
+                            <p>@Html.DisplayFor(modelitem => Model.ColorName)</p>
                         </div>
                     </div>
                     <div class="product-discount">
@@ -112,11 +93,7 @@
                         <div class="product-discount-content">
                             <div class="radio-discount">
                                 <ul>
-                                    <li><input type="radio" name="discount-radio" checked /><p>Giảm ngay 800,000đ</p></li>
-                                    <li>
-                                        <input type="radio" name="discount-radio" />
-                                        <p>Tặng máy ép chậm Kalite trị giá 3.000.000đ <span>Xem chi tiết</span></p>
-                                    </li>
+                                    <li><input type="radio" name="discount-radio" checked /><p>@Html.DisplayFor(modelitem => Model.DiscountDecription)</p></li>
                                 </ul>
                             </div>
                             <ul>
@@ -135,36 +112,12 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="payment-discount">
-                            <div class="payment-discount-content">
-                                <div class="payment-discount-img">
-                                    <img src="~/images/product-detail-zalo-pay.jpg" />
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="payment-discount-text">
-                                    <h3>Ví ZaloPay</h3>
-                                    <p>Nhập mã FPTSHOP200 giảm 1% tối đa 200.000 đồng khi thanh toán 100% qua ZaloPay <span>Xem chi tiết</span></p>
-                                </div>
-                            </div>
-                            <div class="payment-discount-content">
-                                <div class="payment-discount-img">
-                                    <img src="~/images/product-detail-redivo-pay.jpg" />
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="payment-discount-text">
-                                    <h3>Thanh toán qua Kredivo</h3>
-                                    <p>Giảm ngay 5% tối đa 200.000 đồng khi thanh toán trả góp 6/12 tháng qua Kredivo <span>Xem chi tiết</span></p>
-                                </div>
-                            </div>
-                        </div>*@
                     <div class="click-to-buy">
-                         @*@using (Html.BeginForm("AddToCart", "Carts", new { id = Model.ProductDetailID }, FormMethod.Post))
-                         {
-                             <a> <input type="submit" value="MUA NGAY" /></a>
-                         }*@
-                        <a href="@Html.Action("AddToCart", "Carts", new {id = Model.ProductDetailID})"><input type="button" value="MUA NGAY" /></a>
-                        <a><input type="button" value="TRẢ GÓP 0%" /></a>
-                        <a><input type="button" value="TRẢ GÓP QUA THẺ"/></a>
+                        <a class="btn btn-primary" href="@Url.Action("AddToCart", "Home", new { id = Model.ProductID })">
+                            <input type="button" value="MUA NGAY" />
+                        </a>
+                        <input type="button" value="TRẢ GÓP 0%"/>
+                        <input type="button" value="TRẢ GÓP QUA THẺ"/>
                     </div>
                     <div class="located">
                         <p>Gọi <span>1800-6601</span> để được tư vấn mua hàng (Miễn phí)</p>
@@ -182,52 +135,6 @@
                     @Html.Action("ProductParamSliderPartialView","Product")
                     <h3>@Html.DisplayFor(model => model.ProDescriptionTitle)</h3>
                     <p>Chiến thần smartphone tầm trung gọi tên @Html.DisplayFor(model => model.ProName) với những tính năng đột phá từ màn hình 120Hz mượt mà, 4 camera 50MP cho đến hiệu năng “khủng” Snapdragon 695, sẵn sàng cùng bạn khai mở tiềm lực công nghệ tối ưu để tận hưởng cuộc sống tiện lợi và thông minh.</p><br />
-                    <img src="~/images/paramNews-A23-1.jpg" />
-                    <div class="expand-button">
-                        <button class="expand-btn2">Đọc thêm <i class="fa-solid fa-angle-down"></i></button>
-                    </div>
-                    <div class="expand-content">
-                        <h3>Tốc độ với kết nối 5G</h3><br />
-                        <p>Mở ra kỉ nguyên Internet tốc độ, @Html.DisplayFor(model => model.ProName) tích hợp sẵn công nghệ kết nối nhanh nhất hiện nay. @Html.DisplayFor(model => model.ProName) là một trong những đại diện hiếm hoi trong phân khúc sở hữu 5G. Tốc độ 5G sẽ giúp bạn làm chủ cuộc chơi dễ dàng. Mọi tương tác, kết nối trực tuyến đều diễn ra trong chớp mắt. Bạn sẽ trải nghiệm được sự khác biệt từ những điều nhỏ nhất, tải dữ liệu, chia sẻ hay phát trực tuyến Youtube, xem phim, chiến game cực đã với độ phản hồi gần như tuyệt đối.</p><br />
-                        <img src="~/images/paramNews-A23-3.jpg" />
-                        <h3>Chiến thần hiệu năng đích thực</h3><br />
-                        <p>Không chỉ có kết nối trực tuyến nhanh, mà <span><a href="ProductCategory">điện thoại</a></span> còn mượt mà với Snapdragon 695. Một bộ vi xử lý siêu mạnh trong phân khúc cho khả năng xử lý vượt trội. Snapdragon 695 cũng được tối ưu khá đầy đủ cho các tựa game hot nhất hiện nay, đảm bảo trải nghiệm những tùy chỉnh “xịn sò”, mang tới không gian gaming hoàn hảo. Sự đồng hành cùng 4GB RAM và 128GB ROM còn cho bạn lưu trữ thoải mái. Đồng thời, bạn có thể mở rộng thêm ROM đến 1TB thông qua thẻ microSD.</p><br />
-                        <img src="~/images/paramNews-A23-2.jpg" />
-                        <h3>Màn hình chưa bao giờ mượt đến thế</h3><br />
-                        <p>Mở ra loạt công nghệ tiên tiến, @Html.DisplayFor(model => model.ProName) trở thành đại diện hoàn hảo trong phân khúc với màn hình chưa bao giờ gặp gỡ. <span>Samsung</span> đã trang bị màn hình 120Hz siêu mượt mà. Các thao tác chuyển cảnh hay gaming đều diễn ra nhanh chóng. Sự đầu tư cẩn thận này cho bạn trải nghiệm thật sự khác so với những sản phẩm trước đây. Chi tiết cũng được bảo đảm với hình ảnh chân thực, sống động, giúp bạn tận hưởng trọn vẹn thế giới đa sắc màu cùng độ phân giải FHD+ trên màn hình tràn viền Infinity-V 6.6 inch.</p><br />
-                        <img src="~/images/paramNews-A23-4.jpg" />
-                        <h3>Đẹp mọi góc với bộ 4 camera đột phá</h3><br />
-                        <p>Đột phá và tuyệt đỉnh hơn với bộ 4 camera chất lượng. Ảnh được chụp bởi @Html.DisplayFor(model => model.ProName) sẽ giúp bạn hài lòng hoàn toàn với camera chính 50MP, có hỗ trợ chống rung OIS. Khả năng lấy nét nhanh, chuẩn xác, độ phân giải cao cho chất lượng cực tốt, đảm bảo các chi tiết sắc nét, sống động, dù chủ thể đang đứng yên hay di chuyển. Tự tin "pose" mọi dáng yêu thích vì chống rung OIS và cảm biến 50MP sẽ “cân” tất cả khung hình của bạn.</p><br />
-                        <p>Các camera còn lại cũng tối ưu để bạn thỏa sức sáng tạo cùng camera góc rộng 5MP, camera xóa phông 2MP hay chụp ảnh nghệ thuật cùng camera macro 2MP.</p><br />
-                        <img src="~/images/paramNews-A23-5.jpg" />
-                        <h3>Chống rung OIS - Quay video chuyên nghiệp trong tầm tay</h3><br />
-                        <p>Chống rung OIS không chỉ có sức mạnh với hình ảnh, mà với video, đây cũng là trợ lý đắc lực. Tính năng cho phép cố định khung hình chắc chắn, để mọi chuyển động trong video đều được giữ vững, các chi tiết không bị nhòe hay rung lắc quá mức. Từ đó, các thước phim được sản xuất bởi Samsung A23 5G sẽ mượt mà và chuyên nghiệp. Đối với những bạn nào thích quay TikTok hay vlog, Galaxy A23 5G sẽ là người bạn đồng hành lý tưởng, sẵn sàng sáng tạo mọi nội dung và tạo ra xu hướng dễ dàng.</p><br />
-                        <img src="~/images/paramNews-A23-6.jpg" />
-                        <h3>Bao quát toàn cảnh với camera góc rộng</h3><br />
-                        <p>Mọi thứ bạn nhìn thấy đều có thể ghi lại một cách trọn vẹn, đầy đủ chi tiết với camera góc rộng 5MP, góc chụp đến 123 độ. Bạn sẽ không bỏ lỡ chi tiết nào ra khỏi khung hình. Camera phù hợp khi chụp nhóm đông người cùng bạn bè, người thân hoặc ghi lại thiên nhiên hùng vĩ hay kiến trúc đồ sộ trong những chuyến du lịch.</p><br />
-                        <img src="~/images/paramNews-A23-7.jpg" />
-                        <h3>Ảnh chân dung nổi bật</h3><br />
-                        <p>Bất cứ khi nào muốn nổi bật hơn, bạn hãy tận dụng camera xóa phông 2MP, cho phép điều chỉnh độ sâu trường ảnh trong mỗi lần bấm máy. Hãy thử @Html.DisplayFor(model => model.ProName) tùy chỉnh hậu cảnh phù hợp để chủ thể tỏa sáng theo ý muốn. Bạn có thể chỉnh các hiệu ứng ánh nền phía sau là những ngôi sao hay bông tuyết, ảnh chân dung sẽ tương tự máy ảnh chuyên nghiệp.</p><br />
-                        <img src="~/images/paramNews-A23-8.jpg" />
-                        <h3>Tự tin trong mọi khung hình selfie</h3><br />
-                        <p>Camera trước 8MP của @Html.DisplayFor(model => model.ProName)sẽ giúp bạn tỏa sáng ở mọi khung hình selfie. Tối ưu làm đẹp AI, tự động điều chỉnh làn da, màu sắc phù hợp, để bạn rạng rỡ nhưng không phá đi nét nguyên thủy. Thêm độc đáo và thú vị khi Galaxy A23 5G có các hiệu ứng bokeh lung linh, để ảnh ấn tượng và chuyên nghiệp. Bạn sẽ cảm thấy thích selfie hơn trên @Html.DisplayFor(model => model.ProName) với trọn bộ công nghệ ảnh từ Samsung.</p><br />
-                        <img src="~/images/paramNews-A23-9.jpg" />
-                        <h3>Sắc màu cá tính, phù hợp Gen Z năng động</h3><br />
-                        <p>Ghi dấu với bản sắc độc nhất của dòng <span>Samsung Galaxy A</span>, điện thoại có thiết kế liền mạch, cụm camera viền mỏng, tạo nên diện mạo không thể chối từ. Phần thân máy còn được trau chuốt tỉ mỉ cho từng chi tiết, để máy đạt độ hoàn thiện cao. Đồng thời, Samsung Galaxy A23 5G còn có hai phiên bản sắc màu đậm chất Gen Z năng động và hiện đại, bao gồm: Xanh Năng Động và Đen Cá Tính để bạn có thể thỏa sức thể hiện cá tính bản thân.</p><br />
-                        <img src="~/images/paramNews-A23-10.jpg" />
-                        <h3>Pin dùng thoải mái 2 ngày</h3><br />
-                        <p>Cỗ máy @Html.DisplayFor(model => model.ProName) được hoạt động bền bỉ đến 2 ngày trong một lần sạc. Mang đến người dùng thời lượng pin lý tưởng để bạn trải nghiệm liền mạch, sử dụng thoải mái mọi tác vụ dành cho liên lạc, học tập hay giải trí. Một lợi thế để người dùng có cuộc sống năng động, tiện lợi. Chỉ cần sạc vào tối hôm trước, smartphone sẽ đồng hành cùng bạn cả ngày dài.</p><br />
-                        <img src="~/images/paramNews-A23-11.jpg" />
-                        <h3>Sự hỗ trợ từ Game Booster, sẵn sàng cân team</h3><br />
-                        <p>Song hành cùng hiệu năng mạnh, màn hình 120Hz mượt mà, @Html.DisplayFor(model => model.ProName) còn có sự xuất hiện của chế độ Game Booster. Tính năng cho phép bạn có trải nghiệm giao diện game chuyên biệt, điều hướng thân thiện. Đặc biệt nhất là khả năng tối ưu nhiệt lẫn pin, vừa đảm bảo trải nghiệm game liền mạch, không độ trễ, không gian game riêng tư, mà còn tiết kiệm pin lẫn thoải mái trong toàn bộ quá trình “chiến” game, sẵn sàng “cân” team dài lâu cùng đồng đội.</p><br />
-                        <img src="~/images/paramNews-A23-12.jpg" />
-                        <h3>Âm thanh Dolby Atmos – giải trí sống động</h3>
-                        <p>Phần âm thanh của @Html.DisplayFor(model => model.ProName) được nâng tầm khi bạn cắm tai nghe vào và tận hưởng chất âm từ công nghệ Dolby Atmos. Đây là công nghệ tái tạo âm thanh vòm, giúp bạn thưởng thức âm nhạc đa chiều 360 độ, cho mọi nội dung như diễn ra xung quanh.</p><br />
-                        <img src="~/images/paramNews-A23-13.jpg" />
-                        <h3>Bảo mật vân tay an toàn</h3><br />
-                        <p><span>@Html.DisplayFor(model => model.ProName)</span> đảm bảo an toàn khi tích hợp cảm biến vân tay ngay nút nguồn. Thiết kế này cho phép smartphone đạt tính thẩm mỹ cao lẫn sự tiện lợi tối ưu cho người dùng. Chỉ cần bạn chạm vào nút nguồn, smartphone đã sẵn sàng cùng bạn để mở ra cả thế giới giải trí bất tận hay liên lạc, kết nối với mọi người.</p><br />
-                        <img src="~/images/paramNews-A23-14.jpg" />
-                    </div>
                 </div>
                 <div class="paramNews-content-right">
                     <div class="paramNews-content-right-top">

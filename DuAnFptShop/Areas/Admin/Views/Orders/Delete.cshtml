@@ -1,4 +1,4 @@
-﻿@*@model DuAnFptShop.Models.Order
+﻿@model DuAnFptShop.Models.Order
 
 @{
     ViewBag.Title = "Delete";
@@ -53,6 +53,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastPrice)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Customer.CusName)
         </dt>
 
@@ -78,4 +94,4 @@
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
-</div>*@
+</div>

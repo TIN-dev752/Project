@@ -16,7 +16,15 @@
         <div class="container">
             <ul>
                 <li><a href=""><img src="~/images/logoFPT.png" /></a></li>
-                <li><input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện...cần tìm" maxlength="57"/><i class="fa-solid fa-magnifying-glass"></i></li>
+                <li>
+                    <form action="/home/search" method="post">
+                        <input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện...cần tìm" maxlength="57" name="data" />
+
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </li>   
                 @*<li>
                     <a href=""><i class="fa-solid fa-file-invoice"></i><br />Thông tin hay</a>
                     <div class="subMenu">

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<DuAnFptShop.Models.ViewModel.CartViewModel>
-
-
+﻿@model List<CartItem>
+@using DuAnFptShop.Models
 @{
     ViewBag.Title = "ShopCart";
     Layout = "~/Views/Shared/_MasterLayout1.cshtml";
 }
+
 
 <head>
     <meta charset="utf-8" />
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/ShopCartCSS.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -40,24 +40,24 @@
             <div class="container">
                 <div class="shopping-items-content">
                     <div class="shopping-items-content-wrapper">
-                        <h2 id="number-product">Có 1 sản phẩm trong giỏ hàng</h2>
-                        <div class="product-info">
-                            @foreach (var item in Model)
-                            {
+                        <h2 id="number-product">Có @ViewBag.TotalNumber sản phẩm trong giỏ hàng</h2>
+                        @foreach (var item in Model)
+                        {
+                            <div class="product-info">
                                 <div class="product-info-left">
-                                    <img src="@Url.Content(item.ProImage)" />
+                                    <a href="@Url.Action("ShopCart", "Home", new { id = item.ProductID })"><img src="@Url.Content(item.ImagePro)" /></a>
                                     <input type="checkbox" checked />
                                 </div>
                                 <div class="product-info-right">
                                     <div class="product-info-right-top">
-                                        <h2>Điện thoại di động @Html.DisplayFor(modelitem => item.ProName)</h2>
-                                        <i class="fa-solid fa-trash"></i>
+                                        <h2>@item.NamePro</h2>
+                                        <a herf="@Url.Action("Delete","Home",new { id = @item.ProductID})" onclick="return confirm('Xóa sản Phẩm');"><i class="fa-solid fa-trash"></i></a>@*<i class="fa-solid fa-trash"></i>*@
                                     </div>
                                     <div class="product-info-right-bottom">
                                         <div class="color">
                                             <div class="select-btn">
                                                 <p>Màu sắc</p>
-                                                <span class="btn-text">@Html.DisplayFor(modelitem => item.ColorName) <i class="fa-solid fa-chevron-down"></i></span>
+                                                <span class="btn-text">Xanh <i class="fa-solid fa-chevron-down"></i></span>
                                             </div>
                                             <ul class="color-options">
                                                 <li class="color-option">
@@ -81,28 +81,28 @@
                                             <button class="plus"><i class="fa-solid fa-plus"></i></button>
                                         </div>
                                         <div class="price">
-                                            <p class="newPrice">@String.Format("{0:N0}", item.NewPrice)đ</p>
-                                            <p class="oldPrice">@String.Format("{0:N0}", item.OldPrice)đ</p>
+                                            <p class="newPrice" style="font-size:25px; color: red">@String.Format("{0:N0}", item.NewPrice) <span style="text-decoration:underline">đ</span></p>
+                                            <p class="oldPrice">@String.Format("{0:N0}", item.OldPrice) <span style="text-decoration:underline">đ</span></p>
                                         </div>
                                     </div>
                                 </div>
-                                <h3>Khuyến mãi theo sản phẩm</h3>
-                                <div class="promotion">
-                                    <div class="promotion-content">
-                                        <div class="promotion-title">
-                                            <i class="fa-solid fa-circle-check"></i>
-                                            <h3>Giảm ngay 800,000đ</h3>
-                                        </div>
-                                        @*<div class="promotion-extra">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                            <h3>Tặng máy ép chậm Kalite trị giá 3.000.000đ <a href="">Xem chi tiết</a></h3>
-                                            <p>Không áp dụng đồng thời với các khuyến mãi sau:</p>
-                                            <p>- Giảm ngay 800,000đ</p>
-                                        </div>*@
+                            </div>
+                            <h3>Khuyến mãi theo sản phẩm</h3>
+                            <div class="promotion">
+                                <div class="promotion-content">
+                                    <div class="promotion-title">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <h3>@Html.DisplayFor(modelitem => item.DiscountDecription)</h3>
                                     </div>
+                                    @*<div class="promotion-extra">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        <h3>Tặng máy ép chậm Kalite trị giá 3.000.000đ <a href="">Xem chi tiết</a></h3>
+                                        <p>Không áp dụng đồng thời với các khuyến mãi sau:</p>
+                                        <p>- Giảm ngay 800,000đ</p>
+                                    </div>*@
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
                     <div class="shopping-items-content-wrapper">
                         <div class="order-promotion">
@@ -140,7 +140,7 @@
                         <div class="delivery">
                             <div class="delivery-option">
                                 <div class="delivery-option-title">
-                                    <i class="fa-solid fa-box"></i>
+                                    <i style="color:red; font-size:22px; margin-right:10px;" class="fa-solid fa-box"></i>
                                     <h2>Chọn hình thức nhận hàng</h2>
                                 </div>
                                 <div class="delivery-radio">
@@ -184,7 +184,7 @@
                                         <p>Địa chỉ nhận hàng</p>
                                         <div class="select-option">
                                             <input type="text" placeholder="Chọn Tỉnh/Thành phố" id="soValue" readonly name="" />
-                                            <i class="fa-solid fa-chevron-down"></i>
+                                            <i style="margin-left:-30px;" class="fa-solid fa-chevron-down"></i>
                                         </div>
                                         <div class="content">
                                             <div class="search">
@@ -240,7 +240,7 @@
                         <div class="payment-method">
                             <div class="payment-method-content">
                                 <div class="payment-method-title">
-                                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                                    <i style="color:red; font-size:22px; margin-right:10px;" class="fa-solid fa-money-bill-1-wave"></i>
                                     <h2>Chọn hình thức thanh toán</h2>
                                 </div>
                                 <div class="methods">
@@ -299,21 +299,17 @@
                         <div class="pay-content-body-left">
                             <div class="pay-content-body-left-1">
                                 <p>Tổng tiền:</p>
-                                <p>5.990.000đ</p>
+                                <p>@String.Format("{0:N0}", @ViewBag.TotalPrice)đ</p>
                             </div>
                             <div class="pay-content-body-left-1">
                                 <p>Giảm giá khuyến mãi:</p>
-                                <p>-800.000đ</p>
+                                <p>@String.Format("{0:N0}", @ViewBag.DisCount)đ</p>
                             </div>
-                            @*<div class="pay-content-body-left-1">
-                                    <p>Giảm giá voucher:</p>
-                                    <p>0đ</p>
-                                </div>*@
                         </div>
                         <div class="pay-content-body-right">
                             <div class="pay-content-body-right-1">
-                                <p>Cần thanh toán (1 sản phẩm)</p>
-                                <p class="lasted-price">5.190.000đ</p>
+                                <p>Cần thanh toán (@ViewBag.TotalNumber sản phẩm)</p>
+                                <p class="lasted-price">@String.Format("{0:N0}", @ViewBag.LastPrice)<span style="text-decoration:underline">đ</span></p>
                             </div>
                             <button>Hoàn tất đặt hàng</button>
                         </div>

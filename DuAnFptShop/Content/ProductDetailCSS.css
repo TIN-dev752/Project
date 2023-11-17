@@ -624,7 +624,7 @@
     justify-content: space-between;
 }
 
-.click-to-buy a:nth-child(1){
+.click-to-buy button:nth-child(1){
     width:100%;
     height:60px;
     background-color:#CB1C22;
@@ -633,24 +633,33 @@
     outline:none;
     border-radius:6px;
     margin-bottom:8px;
-    text-align:center;
     cursor:pointer;
 }
 
-.click-to-buy a:nth-child(1) input{
+.click-to-buy a{
     width:100%;
     height:60px;
-    background-color:#CB1C22;
+    background-color:#C81B23;
     color:#FFFFFF;
     border:none;
     outline:none;
     border-radius:6px;
-    margin-bottom:8px;
-    font-size:20px;
     cursor:pointer;
 }
 
-.click-to-buy a:nth-child(n + 2){
+.click-to-buy a input{
+    width:100%;
+    height:60px;
+    background-color:#C81B23;
+    color:#FFFFFF;
+    border:none;
+    outline:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+
+.click-to-buy > input{
     width:49%;
     height:60px;
     background-color:#0664F9;
@@ -658,21 +667,10 @@
     border:none;
     outline:none;
     border-radius:6px;
-    text-align:center;
+    margin-top:10px;
     cursor:pointer;
 }
 
-.click-to-buy a:nth-child(n + 2) input{
-    width:100%;
-    height:60px;
-    background-color:#0664F9;
-    color:#FFFFFF;
-    border:none;
-    outline:none;
-    border-radius:6px;
-    font-size:20px;
-    cursor:pointer;
-}
 
 /*---------------------------------------------located-----------------------------------------------*/
 .located{

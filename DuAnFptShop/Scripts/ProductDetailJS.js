@@ -62,12 +62,14 @@
         this.style.display = "none";
     })
 
-    const expandbtn2 = document.querySelector(".expand-btn2");
+    //const expandbtn2 = document.querySelector(".expand-btn2");
 
-    expandbtn2.addEventListener("click", function () {
-        document.querySelector(".expand-content").style.display = "block";
-        this.style.display = "none";
-    })
+    //if (expandbtn2) {
+    //    expandbtn2.addEventListener("click", function () {
+    //        document.querySelector(".expand-content").style.display = "block";
+    //        this.style.display = "none";
+    //    })
+    //}
 
     const tableViewDetailOpenbtn1 = document.querySelector(".table-view-detail-btn1");
     const tableViewDetailClosedbtn1 = document.getElementById("table-view-detail-closed");
@@ -114,21 +116,19 @@
         })
     })
 
-    /*questions*/
-
-    const accordionItem = document.getElementsByClassName("accordion-item");
-
-    for (let i = 0; i < accordionItem.length; i++) {
-        accordionItem[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-        });
-    }
-
-
-
 }
 
 // Gọi hàm khi trang được load
 document.addEventListener("DOMContentLoaded", function () {
     commonFunction();
 });
+
+/*questions*/
+
+const accordionItem = document.getElementsByClassName("accordion-item");
+
+for (let i = 0; i < accordionItem.length; i++) {
+    accordionItem[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+    });
+}

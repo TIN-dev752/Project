@@ -121,12 +121,7 @@ a:hover{
     background-color: #FFFFFF;
     width:100%;
     display:flex;
-    flex-wrap:wrap;
     border-radius:20px 20px 0 0;
-}
-
-.product-info > h3{
-    padding:20px;
 }
 
 .product-info-left{
@@ -867,7 +862,8 @@ a:hover{
 }
 
 .payment-method-title i{
-    color:#CB1C22;
+   /* color:#CB1C22;*/
+   color:red;
     font-size:26px;
     margin-right:20px;
 }

@@ -47,16 +47,16 @@
 
         .btn a {
             text-decoration: none;
-            color:white;
+            color: white;
         }
 
-        .btn-detail{
-            width:90px;
-            background-color:darkblue;
-        }
+    .btn-detail {
+        width: 90px;
+        background-color: darkblue;
+    }
 
-        .btn-detail:hover{
-            background-color:blue;
+        .btn-detail:hover {
+            background-color: blue;
         }
 </style>
 
@@ -105,7 +105,14 @@
                         @Html.DisplayFor(modelItem => item.AddressDelivery)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                        @if (item.OrderStatus == "1")
+                        {
+                            @:Đã giao
+                        }
+                        else
+                        {
+                            @:Chưa giao
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ReceiverName)
@@ -121,7 +128,7 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |*@
-                        <button class="btn btn-detail">@Html.ActionLink("Chi tiết SP", "Details", new { id = item.OrderID })</button>
+                        <button class="btn btn-detail">@Html.ActionLink("Chi tiết ĐH", "Details", new { id = item.OrderID })</button>
                         @*@Html.ActionLink("Delete", "Delete", new { id=item.OrderID })*@
                     </td>
                 </tr>
@@ -130,5 +137,4 @@
         </table>
     </div>
 </div>
-
 

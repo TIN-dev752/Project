@@ -39,50 +39,49 @@
             line-height: 50px;
         }
 
-.body{
-    width:100%;
-    background-color:white;
-    padding:20px 0;
-}
+    .body {
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+    }
 
-.Product-info{
-    width:100%;
-    display:flex;
-}
+    .orders-info{
+        width:100%;
+    }
 
-.Product-info .Product-img{
-    padding:20px;
-    border:1px solid #CFD5DB;
-    border-radius:10px;
-}
+    .order-info{
+        width:100%;
+        display:flex;
+        justify-content:left;
+    }
 
-.Product-info .info{
-    margin-left:20px;
-}
+    .order-info p:first-child{
+        font-weight:bold;
+    }
 
-.Product-info .info h2{
-    color:#CD5C5C;
-    padding-bottom:10px;
-}
+    .order-info p{
+        padding-left:10px;
+    }
 
-.body table{
-    width:100%;
-    margin-top:20px;
-}
 
-.body table tr{
-    width:100%;
-}
+    .body table {
+        width: 100%;
+        margin-top: 20px;
+    }
 
-.body table tr th{
-    border:1px solid #CFD5DB;
-    padding:10px;
-}
+        .body table tr {
+            width: 100%;
+        }
 
-.body table tr td{
-    border:1px solid #CFD5DB;
-    padding:10px;
-}
+            .body table tr th {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
+
+            .body table tr td {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
 
     .btn-default {
         border: 1px solid #CFD5DB;
@@ -110,16 +109,26 @@
     </div>
     <div class="body">
         <div class="container">
-            <div class="Product-info">
-                <div class="Product-img">
-                    <img src="@Url.Content(Model.OrderItems.FirstOrDefault().ProductDetail.Product.ProImage)" />
+            <div class="orders-info">
+                <div class="order-info">
+                    <p>Tên người nhận: </p>
+                    <p>@Html.DisplayFor(model => model.ReceiverName)</p>
                 </div>
-                <div class="info">
-                    <h2>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</h2>
-                    <h5>MÔ TẢ TỔNG QUÁT SẢN PHẨM </h5>
-                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProDecription)</p>
-                    <h5>NHÓM SẢN PHẨM</h5>
-                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</p>
+                <div class="order-info">
+                    <p>SĐT người nhận: </p>
+                    <p>@Html.DisplayFor(model => model.ReceiverPhone)</p>
+                </div>
+                <div class="order-info">
+                    <p>Ngày đặt hàng: </p>
+                    <p>@Html.DisplayFor(model => model.OrderDate)</p>
+                </div>
+                <div class="order-info">
+                    <p>Địa chỉ giao hàng: </p>
+                    <p>@Html.DisplayFor(model => model.AddressDelivery)</p>
+                </div>
+                <div class="order-info">
+                    <p>Phương thức thanh toán: </p>
+                    <p>@Html.DisplayFor(model => model.PaymentMethod.PaymentMethodName)</p>
                 </div>
             </div>
             <table>

@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DuAnFptShop.Models;
-using DuAnFptShop.Models.ViewModel;
 
 namespace DuAnFptShop.Areas.Admin.Controllers
 {
@@ -50,7 +49,7 @@ namespace DuAnFptShop.Areas.Admin.Controllers
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "OrderID,CusID,OrderDate,AddressDelivery,PaymentMethodID,OrderStatus,ReceiverName,ReceiverPhone")] Order order)
+        //public ActionResult Create([Bind(Include = "OrderID,CusID,OrderDate,AddressDelivery,PaymentMethodID,OrderStatus,ReceiverName,ReceiverPhone,TotalPrice,LastPrice")] Order order)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -86,7 +85,7 @@ namespace DuAnFptShop.Areas.Admin.Controllers
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "OrderID,CusID,OrderDate,AddressDelivery,PaymentMethodID,OrderStatus,ReceiverName,ReceiverPhone")] Order order)
+        //public ActionResult Edit([Bind(Include = "OrderID,CusID,OrderDate,AddressDelivery,PaymentMethodID,OrderStatus,ReceiverName,ReceiverPhone,TotalPrice,LastPrice")] Order order)
         //{
         //    if (ModelState.IsValid)
         //    {

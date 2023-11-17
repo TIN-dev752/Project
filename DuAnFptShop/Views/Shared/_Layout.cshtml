@@ -37,6 +37,49 @@
          color:peachpuff;
      }
 
+    .collapse > ul > li:nth-child(4) {
+        position: relative;
+        color: #FFFFFF;
+        margin:4px 0 0;
+    }
+
+    .collapse > ul > li:nth-child(4):hover .sub-menu{
+        display:block;
+    }
+
+    .collapse > ul > li:nth-child(4) a{
+        color: #FFFFFF;
+        margin: 0 10px;
+    }
+
+    .collapse ul li:nth-child(4) .sub-menu {
+        position: absolute;
+        display: none;
+        background-color: #212529;
+        top: 139%;
+        width: 460px;
+        z-index: 100;
+        border-radius: 3px;
+    }
+
+     .collapse ul li:nth-child(4) .sub-menu ul{
+         display:flex;
+         flex-wrap:wrap;
+     }
+
+     .collapse ul li:nth-child(4) .sub-menu ul li {
+         width:50%;
+         padding:3px;
+     }
+
+     .collapse ul li:nth-child(4) .sub-menu ul li a{
+         color:#ffffff;
+     }
+
+     .collapse ul li:nth-child(4) .sub-menu ul li a:hover{
+         color:peachpuff;
+     }
+
      footer p{
          color:indianred;
      }
@@ -59,9 +102,30 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><a href="@Url.Action("Index","Categories")">Loại hàng</a></li> 
-                    <li><a href="@Url.Action("Index","Products")">Kho hàng</a></li> 
+                    <li><a href="@Url.Action("Index","Categories")">Loại hàng</a></li>
+                    <li><a href="@Url.Action("Index","Products")">Hàng hóa</a></li>
+                    <li><a href="@Url.Action("Index","ProductDetails")">Kho hàng</a></li>
+                    <li><a href="">Danh mục</a>
+                        <div class="sub-menu">
+                            <ul>
+                                <li><a href="@Url.Action("Index","CameraFeatures")">Camera</a></li>
+                                <li><a href="@Url.Action("Index","ScreenSizes")">Màn hình</a></li>
+                                <li><a href="@Url.Action("Index","PerformanceBatteries")">Pin</a></li>
+                                <li><a href="@Url.Action("Index","Colors")">Màu sắc</a></li>
+                                <li><a href="@Url.Action("Index","ProductDiscounts")">Khuyến mãi</a></li>
+                                <li><a href="@Url.Action("Index","ProductNews")">Tin tức</a></li>
+                                <li><a href="@Url.Action("Index","ProductQuestions")">Câu hỏi</a></li>
+                                <li><a href="@Url.Action("Index","ProductSliders")">Slider sản phẩm</a></li>
+                                <li><a href="@Url.Action("Index","Rams")">Ram</a></li>
+                                <li><a href="@Url.Action("Index","Storages")">Bộ nhớ</a></li>
+                                <li><a href="@Url.Action("Index","PaymentMethods")">Phương thức thanh toán</a></li>
+                                <li><a href="@Url.Action("Index","CategoriesSliders")">Slider danh mục sản phẩm</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li><a href="@Url.Action("Index","Orders")">Đơn hàng</a></li>
+                    <li><a href="@Url.Action("Index","Customers")">Khách hàng</a></li>
+                    <li><a href="@Url.Action("Index","Users")">Người quản trị</a></li>
                 </ul>
             </div>
         </div>

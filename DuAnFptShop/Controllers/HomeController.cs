@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Net;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json.Serialization;
 
 namespace DuAnFptShop.Controllers
 {
@@ -48,18 +49,18 @@ namespace DuAnFptShop.Controllers
 
         public ActionResult OutstandingListPartialView()//lấy sản phẩm theo tiêu chí năm sản xuất
         {
-            int currentYear = DateTime.Now.Year;
-
             var outstandingList = (from p in db.Products
                                    join pd in db.ProductDetails on p.ProductID equals pd.ProductID
                                    join r in db.Rams on pd.RamID equals r.RamID
                                    join s in db.Storages on pd.StorageID equals s.StorageID
-                                   where p.LaunchTime == currentYear
+                                   where pd.QuantityPurchased > 0
                                    select new HomeViewModel
                                    {
                                        ProductDetailID = pd.ProductDetailID,
                                        NewPrice = pd.NewPrice,
                                        OldPrice = pd.OldPrice,
+                                       QuantityInventory = pd.QuantityInventory,
+                                       QuantityPurchased = pd.QuantityPurchased,
                                        ProductID = p.ProductID,
                                        ProName = p.ProName,
                                        Screen = p.Screen,
@@ -71,6 +72,7 @@ namespace DuAnFptShop.Controllers
                                        StorageName = s.StorageName,
                                    })
                                    .DistinctBy(pd => pd.ProductID)
+                                   .OrderByDescending(pd => pd.QuantityPurchased)
                                    .Take(8)
                                    .ToList();
 
@@ -119,6 +121,11 @@ namespace DuAnFptShop.Controllers
                 ColorID = pro.Color.ColorID,
                 ColorName = pro.Color.ColorName,
 
+                //lay thong tin bangr ProductDiscount
+                DiscountID = pro.ProductDiscounts.FirstOrDefault().DiscountID,
+                DiscountDecription = pro.ProductDiscounts.FirstOrDefault().DiscountDecription,
+                DiscountType = pro.ProductDiscounts.FirstOrDefault().DiscountType,
+                DiscountValue = pro.ProductDiscounts.FirstOrDefault().DiscountValue,
             };
             return View(detailProduct);
         }
@@ -144,37 +151,142 @@ namespace DuAnFptShop.Controllers
             }).ToList();
             return View(homeViewModel);
         }
+
+        public List<CartItem> GetCart()
+        {
+            List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
+            if (myCart == null)
+            {
+                myCart = new List<CartItem>();
+                Session["GioHang"] = myCart;
+            }
+            return myCart;
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            List<CartItem> myCart = GetCart();
+            CartItem currentProduct = myCart.FirstOrDefault(p => p.ProductID == id);
+            if (currentProduct == null)
+            {
+                currentProduct = new CartItem(id);
+                myCart.Add(currentProduct);
+            }
+            else
+            {
+                currentProduct.Number++;
+            }
+            return RedirectToAction("ShopCart", "Home");
+        }
+        public ActionResult Delete(int id)
+        {
+            List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
+            CartItem item = myCart.FirstOrDefault(m => m.ProductID == id);
+            if(item !=null)
+            {
+                myCart.Remove(item);
+                Session["GioHang"] = myCart;
+            }
+            return RedirectToAction("ShopCart");
+        }
+        public ActionResult Update(int id, int Number)
+        {
+            List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
+            CartItem item = myCart.FirstOrDefault(m => m.ProductID == id);
+            if (item != null)
+            {
+                item.Number = Number;
+                Session["GioHang"] = myCart;
+            }
+            return RedirectToAction("ShopCart");
+        }
+
+        private int GetTotalNumber()
+        {
+            int totalNumber = 0;
+            List<CartItem> myCart = GetCart();
+            if (myCart != null)
+            {
+                totalNumber = myCart.Sum(sp => sp.Number);
+            }
+            return totalNumber;
+        }
+
+        private int GetDisCount()
+        {
+            int DisCount = 0;
+            List<CartItem> myCart = GetCart();
+            if (myCart != null)
+            {
+                DisCount = (int)myCart.Sum(sp => sp.DiscountValue);
+            }
+            return DisCount;
+        }
+
+        private decimal GetTotalPrice()
+        {
+            decimal totalPrice = 0;
+            List<CartItem> myCart = GetCart();
+            if (myCart != null)
+                totalPrice = myCart.Sum(sp => sp.FinalPrice());
+            return totalPrice;
+        }
+
+        private decimal GetLastPrice()
+        {
+            decimal lastPrice = 0;
+            List<CartItem> myCart = GetCart();
+            if (myCart != null)
+                lastPrice = myCart.Sum(sp => sp.LastPrice());
+            return lastPrice;
+        }
+
         public ActionResult ShopCart()
         {
-            List<OrderItem> orderItems = db.OrderItems.ToList();
-            List<CartViewModel> cartViewModel = orderItems.Select(orderItem => new CartViewModel
-            { 
-                //bảng productdetail
-                ProductDetailID = (int)orderItem.ProductDetailID,
-                NewPrice = orderItem.ProductDetail.NewPrice,
-                OldPrice= orderItem.ProductDetail.OldPrice,
-                ColorImage = orderItem.ProductDetail.ColorImage,
-
-                //bảng product
-                ProductID = (int)orderItem.ProductDetail.ProductID,
-                ProName = orderItem.ProductDetail.Product.ProName,
-                ProImage = orderItem.ProductDetail.Product.ProImage,
-
-                //bảng orderitem
-                Quantity = orderItem.Quantity,
-
-                //bảng productdiscount
-                DiscountType = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountType,
-                DiscountValue = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountID,
-                DiscountDecription = orderItem.ProductDetail.ProductDiscounts.FirstOrDefault()?.DiscountDecription,
-
-                //bảng Order
-                TotalPrice = orderItem.Order.TotalPrice,
-                LastPrice = orderItem.Order.LastPrice,
-
-            }).ToList();
-            return View(cartViewModel);
+            List<CartItem> myCart = GetCart();
+            if (myCart == null || myCart.Count == 0)
+                return RedirectToAction("HomePage", "Home");
+            ViewBag.TotalNumber = GetTotalNumber();
+            ViewBag.TotalPrice = GetTotalPrice();
+            ViewBag.LastPrice = GetLastPrice();
+            ViewBag.DisCount = GetDisCount();
+            return View(myCart);
         }
-        
+        public ActionResult CartPartial()
+        {
+            ViewBag.TotalNumber = GetTotalNumber();
+            ViewBag.TotalPrice = GetTotalPrice();
+            ViewBag.LastPrice = GetLastPrice();
+            ViewBag.DisCount = GetDisCount();
+            return PartialView();
+        }
+
+        public ActionResult Search(string search = "")
+        {
+            search = Request.Form["data"];
+
+
+            var pc = db.ProductDetails.DistinctBy(pd => pd.ProductID).ToList();
+
+            var prolst = pc.Select(pd => new HomeViewModel
+            {
+                //lấy thông tin bảng ProductDetail
+                ProductDetailID = pd.ProductDetailID,
+                NewPrice = pd.NewPrice,
+                OldPrice = pd.OldPrice,
+
+                //lấy thông tin bảng Product
+                ProductID = (int)pd.ProductID,
+                ProName = pd.Product.ProName,
+                ProImage = pd.Product.ProImage,
+                Screen = pd.Product.Screen,
+                Cpu = pd.Product.Cpu,
+                RamName = pd.Ram.RamName,
+                StorageName = pd.Storage.StorageName,
+            }).Where(p => p.ProName.ToUpper().Contains(search.ToUpper()));
+            return View(prolst.ToList());
+
+        }
+
     }
 }

@@ -39,12 +39,12 @@
             line-height: 50px;
         }
 
-    .list-content{
-        width:100%;
+    .list-content {
+        width: 100%;
     }
 
-    .table{
-        width:1400px;
+    .table {
+        width: 100%;
     }
 
     th {
@@ -112,6 +112,9 @@
             <table class="table">
                 <tr>
                     <th>
+
+                    </th>
+                    <th>
                         Hình sản phẩm
                     </th>
                     <th>
@@ -121,40 +124,22 @@
                         Mô tả tổng quát
                     </th>
                     <th>
-                        Màn hình
-                    </th>
-                    <th>
-                        Camera trước
-                    </th>
-                    <th>
-                        Camera selfie
-                    </th>
-                    <th>
-                        Cpu
-                    </th>
-                    <th>
-                        Dung lượng Pin
-                    </th>
-                    <th>
-                        Sim
-                    </th>
-                    <th>
-                        Hệ điều hành
-                    </th>
-                    <th>
                         Xuất xứ
                     </th>
                     <th>
                         Năm sản xuất
                     </th>
                     <th>
-                        Thương hiệu
+
                     </th>
                 </tr>
 
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
                         <td>
                             <img src="@Url.Content(item.ProImage)" />
                         </td>
@@ -165,41 +150,11 @@
                             @Html.DisplayFor(modelItem => item.ProDecription)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Screen)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Camera)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CameraSelfie)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cpu)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Battery)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sim)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OperatingSystem)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Origin)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.LaunchTime)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category.CateName)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.PerformanceBattery.Performance)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ScreenSize.Size)
-                        </td>*@
                         <td>
                             <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.ProductID }) </button>
                             <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }) </button>
@@ -212,12 +167,30 @@
         </div>
     </div>
 </div>
-<div class="list-btn">
+<div class="list-button">
     <div class="container">
-        <div class="list-btn-content">
+        <div class="list-button-content">
+            <button class="btn btn-default">chọn tất cả</button>
+            <button class="btn btn-default">Bỏ chọn tất cả</button>
+            <button class="btn btn-default">Xóa các mục chọn</button>
             <button class="btn btn-default">
-                @Html.ActionLink("Thêm mới", "Create")
+                @Html.ActionLink("Nhập thêm", "Create")
             </button>
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btn-default:contains('chọn tất cả')").click(function () {
+            $("input[type='checkbox']").prop('checked', true);
+        });
+        $(".btn-default:contains('Bỏ chọn tất cả')").click(function () {
+            $("input[type='checkbox']").prop('checked', false);
+        });
+        $(".btn-default:contains('Xóa các mục chọn')").click(function () {
+            $("input[type='checkbox']:checked").prop('checked', false);
+        });
+    });
+</script>

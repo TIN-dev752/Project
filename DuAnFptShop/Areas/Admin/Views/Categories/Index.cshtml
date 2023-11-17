@@ -125,8 +125,8 @@
                         @Html.DisplayFor(modelItem => item.CateName)
                     </td>
                     <td>
-                        <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.CateID }) </button> 
-                        <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.CateID }) </button> 
+                        <button class="btn btn-Edit"> @Html.ActionLink("Sửa", "Edit", new { id = item.CateID }) </button>
+                        <button class="btn btn-Details"> @Html.ActionLink("Chi tiết", "Details", new { id = item.CateID }) </button>
                         <button class="btn btn-Delete"> @Html.ActionLink("Xóa", "Delete", new { id = item.CateID }) </button>
                     </td>
                 </tr>
@@ -151,11 +151,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $(".btn-default:contains('chọn tất cả')").click(function(){
+    $(document).ready(function () {
+        $(".btn-default:contains('chọn tất cả')").click(function () {
             $("input[type='checkbox']").prop('checked', true);
         });
-        $(".btn-default:contains('Bỏ chọn tất cả')").click(function(){
+        $(".btn-default:contains('Bỏ chọn tất cả')").click(function () {
             $("input[type='checkbox']").prop('checked', false);
         });
         $(".btn-default:contains('Xóa các mục chọn')").click(function () {

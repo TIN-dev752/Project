@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a294580f6a7459bb6a6b7b7c4481570" Name="Diagram1" ZoomLevel="50">
-        <EntityTypeShape EntityType="FPTSHOPModel.CameraFeature" Width="1.5" PointX="5.375" PointY="8.625" IsExpanded="true" />
+      <Diagram DiagramId="6a294580f6a7459bb6a6b7b7c4481570" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="FPTSHOPModel.CameraFeature" Width="1.5" PointX="5.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.Category" Width="1.5" PointX="5.375" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.CategoriesSlider" Width="1.5" PointX="3.375" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Color" Width="1.5" PointX="13" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Color" Width="1.5" PointX="12.875" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.Customer" Width="1.5" PointX="6.125" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.OrderItem" Width="1.5" PointX="10.375" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.Order" Width="1.5" PointX="8.25" PointY="21.375" IsExpanded="true" />
@@ -16,13 +16,13 @@
         <EntityTypeShape EntityType="FPTSHOPModel.PerformanceBattery" Width="1.5" PointX="5.375" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.Product" Width="1.5" PointX="8" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.ProductDetail" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductDiscount" Width="1.5" PointX="13" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.ProductNew" Width="1.5" PointX="5.375" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductDiscount" Width="1.5" PointX="11.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.ProductNew" Width="1.5" PointX="10.375" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.ProductQuestion" Width="1.5" PointX="5.375" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.ProductSlider" Width="1.5" PointX="5.375" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Ram" Width="1.5" PointX="13" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Ram" Width="1.5" PointX="13" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.ScreenSize" Width="1.5" PointX="5.375" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FPTSHOPModel.Storage" Width="1.5" PointX="13" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="FPTSHOPModel.Storage" Width="1.5" PointX="13.125" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FPTSHOPModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="FPTSHOPModel.FK__Categorie__CateI__5CD6CB2B" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__Product__CateID__59FA5E80" ManuallyRouted="false" />
@@ -40,14 +40,7 @@
         <AssociationConnector Association="FPTSHOPModel.FK__ProductDe__RamID__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__ProductDe__Stora__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="FPTSHOPModel.FK__ProductDi__Produ__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="FPTSHOPModel.ProductCamera" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.875" PointY="9.422841796875" />
-          <ConnectorPoint PointX="8.9210043825632326" PointY="9.422841796875" />
-          <ConnectorPoint PointX="8.9210043825632326" PointY="12.610447471679688" />
-          <ConnectorPoint PointX="8.8489583333333339" PointY="12.610447471679688" />
-          <ConnectorPoint PointX="8.6822916666666661" PointY="12.610447471679688" />
-          <ConnectorPoint PointX="8.35156" PointY="12.610447471679688" />
-          <ConnectorPoint PointX="8.35156" PointY="13" />
+        <AssociationConnector Association="FPTSHOPModel.ProductCamera" ManuallyRouted="false" >
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -121,6 +121,7 @@
     <NavigationProperty Name="ProductQuestions" Relationship="Self.FK__ProductQu__Produ__6383C8BA" FromRole="Product" ToRole="ProductQuestion" />
     <NavigationProperty Name="ProductSliders" Relationship="Self.FK__ProductSl__Produ__656C112C" FromRole="Product" ToRole="ProductSlider" />
     <NavigationProperty Name="CameraFeatures" Relationship="Self.ProductCamera" FromRole="Product" ToRole="CameraFeature" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="ProductDetail">
     <Key>
@@ -140,6 +141,8 @@
     <NavigationProperty Name="Ram" Relationship="Self.FK__ProductDe__RamID__5FB337D6" FromRole="ProductDetail" ToRole="Ram" />
     <NavigationProperty Name="Storage" Relationship="Self.FK__ProductDe__Stora__60A75C0F" FromRole="ProductDetail" ToRole="Storage" />
     <NavigationProperty Name="ProductDiscounts" Relationship="Self.FK__ProductDi__Produ__66603565" FromRole="ProductDetail" ToRole="ProductDiscounts" />
+    <Property Name="QuantityInventory" Type="Int32" />
+    <Property Name="QuantityPurchased" Type="Int32" />
   </EntityType>
   <EntityType Name="ProductDiscount">
     <Key>

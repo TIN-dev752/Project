@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FPTSHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FPTSHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CameraFeature">
           <Key>
             <PropertyRef Name="CameraFeatureID" />
@@ -105,6 +105,7 @@
           <Property Name="ScreenSizeID" Type="int" />
           <Property Name="ProImage" Type="varchar" MaxLength="250" />
           <Property Name="ProDescriptionTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="ProductCamera">
           <Key>
@@ -126,6 +127,8 @@
           <Property Name="RamID" Type="int" />
           <Property Name="StorageID" Type="int" />
           <Property Name="ColorImage" Type="nvarchar(max)" />
+          <Property Name="QuantityInventory" Type="int" />
+          <Property Name="QuantityPurchased" Type="int" />
         </EntityType>
         <EntityType Name="ProductDiscounts">
           <Key>
@@ -196,7 +199,7 @@
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Categorie__CateI__5CD6CB2B">
+        <Association Name="FK__Categorie__CateI__00200768">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="CategoriesSlider" Type="Self.CategoriesSlider" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +211,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderItem__Order__693CA210">
+        <Association Name="FK__Categorie__CateI__236943A5">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="CategoriesSlider" Type="Self.CategoriesSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CateID" />
+            </Principal>
+            <Dependent Role="CategoriesSlider">
+              <PropertyRef Name="CateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__CateI__5BE2A6F2">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="CategoriesSlider" Type="Self.CategoriesSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CateID" />
+            </Principal>
+            <Dependent Role="CategoriesSlider">
+              <PropertyRef Name="CateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderItem__Order__01142BA1">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
           <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +247,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__CusID__6754599E">
+        <Association Name="FK__OrderItem__Order__245D67DE">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderItem__Order__5CD6CB2B">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__CusID__02084FDA">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,7 +283,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__PaymentM__68487DD7">
+        <Association Name="FK__Orders__CusID__25518C17">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__CusID__5EBF139D">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__PaymentM__02FC7413">
           <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -244,7 +319,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__CateID__59FA5E80">
+        <Association Name="FK__Orders__PaymentM__2645B050">
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethods">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__PaymentM__5FB337D6">
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethods">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CateID__03F0984C">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +355,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Perform__5AEE82B9">
+        <Association Name="FK__Product__CateID__2739D489">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CateID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CateID__60A75C0F">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CateID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Perform__04E4BC85">
           <End Role="PerformanceBattery" Type="Self.PerformanceBattery" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +391,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__ScreenS__5BE2A6F2">
+        <Association Name="FK__Product__Perform__282DF8C2">
+          <End Role="PerformanceBattery" Type="Self.PerformanceBattery" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerformanceBattery">
+              <PropertyRef Name="PerformanceBatteryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PerformanceBatteryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Perform__619B8048">
+          <End Role="PerformanceBattery" Type="Self.PerformanceBattery" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerformanceBattery">
+              <PropertyRef Name="PerformanceBatteryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PerformanceBatteryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ScreenS__05D8E0BE">
           <End Role="ScreenSize" Type="Self.ScreenSize" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +427,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductCa__Camer__619B8048">
+        <Association Name="FK__Product__ScreenS__29221CFB">
+          <End Role="ScreenSize" Type="Self.ScreenSize" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenSize">
+              <PropertyRef Name="ScreenSizeID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ScreenSizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ScreenS__628FA481">
+          <End Role="ScreenSize" Type="Self.ScreenSize" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScreenSize">
+              <PropertyRef Name="ScreenSizeID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ScreenSizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCa__Camer__06CD04F7">
           <End Role="CameraFeature" Type="Self.CameraFeature" Multiplicity="1" />
           <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
           <ReferentialConstraint>
@@ -292,7 +463,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductCa__Produ__628FA481">
+        <Association Name="FK__ProductCa__Camer__2A164134">
+          <End Role="CameraFeature" Type="Self.CameraFeature" Multiplicity="1" />
+          <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraFeature">
+              <PropertyRef Name="CameraFeatureID" />
+            </Principal>
+            <Dependent Role="ProductCamera">
+              <PropertyRef Name="CameraFeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCa__Camer__6383C8BA">
+          <End Role="CameraFeature" Type="Self.CameraFeature" Multiplicity="1" />
+          <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CameraFeature">
+              <PropertyRef Name="CameraFeatureID" />
+            </Principal>
+            <Dependent Role="ProductCamera">
+              <PropertyRef Name="CameraFeatureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCa__Produ__07C12930">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
           <ReferentialConstraint>
@@ -304,7 +499,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Color__5EBF139D">
+        <Association Name="FK__ProductCa__Produ__2B0A656D">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductCamera">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductCa__Produ__6477ECF3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductCamera" Type="Self.ProductCamera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductCamera">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Color__08B54D69">
           <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,7 +535,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Produ__5DCAEF64">
+        <Association Name="FK__ProductDe__Color__2BFE89A6">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Color__656C112C">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Produ__09A971A2">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +571,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__RamID__5FB337D6">
+        <Association Name="FK__ProductDe__Produ__2CF2ADDF">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Produ__66603565">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__RamID__0A9D95DB">
           <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -340,7 +607,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Stora__60A75C0F">
+        <Association Name="FK__ProductDe__RamID__2DE6D218">
+          <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ram">
+              <PropertyRef Name="RamID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="RamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__RamID__6754599E">
+          <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ram">
+              <PropertyRef Name="RamID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="RamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Stora__0B91BA14">
           <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -352,7 +643,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDi__Produ__66603565">
+        <Association Name="FK__ProductDe__Stora__2EDAF651">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="StorageID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="StorageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDe__Stora__68487DD7">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="StorageID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="StorageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDi__Produ__0C85DE4D">
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="0..1" />
           <End Role="ProductDiscounts" Type="Self.ProductDiscounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -364,7 +679,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductNe__Produ__6477ECF3">
+        <Association Name="FK__ProductDi__Produ__2FCF1A8A">
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="0..1" />
+          <End Role="ProductDiscounts" Type="Self.ProductDiscounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetail">
+              <PropertyRef Name="ProductDetailID" />
+            </Principal>
+            <Dependent Role="ProductDiscounts">
+              <PropertyRef Name="ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductDi__Produ__693CA210">
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="0..1" />
+          <End Role="ProductDiscounts" Type="Self.ProductDiscounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductDetail">
+              <PropertyRef Name="ProductDetailID" />
+            </Principal>
+            <Dependent Role="ProductDiscounts">
+              <PropertyRef Name="ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductNe__Produ__0D7A0286">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductNews" Type="Self.ProductNews" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,7 +715,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductQu__Produ__6383C8BA">
+        <Association Name="FK__ProductNe__Produ__30C33EC3">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductNews" Type="Self.ProductNews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductNews">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductNe__Produ__6A30C649">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductNews" Type="Self.ProductNews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductNews">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductQu__Produ__0E6E26BF">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductQuestion" Type="Self.ProductQuestion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -388,7 +751,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductSl__Produ__656C112C">
+        <Association Name="FK__ProductQu__Produ__31B762FC">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductQuestion" Type="Self.ProductQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductQuestion">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductQu__Produ__6B24EA82">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductQuestion" Type="Self.ProductQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductQuestion">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSl__Produ__0F624AF8">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductSlider" Type="Self.ProductSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductSlider">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSl__Produ__32AB8735">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductSlider" Type="Self.ProductSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductSlider">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSl__Produ__6C190EBB">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductSlider" Type="Self.ProductSlider" Multiplicity="*" />
           <ReferentialConstraint>
@@ -433,71 +844,207 @@
           <EntitySet Name="ScreenSize" EntityType="Self.ScreenSize" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Categorie__CateI__5CD6CB2B" Association="Self.FK__Categorie__CateI__5CD6CB2B">
+          <AssociationSet Name="FK__Categorie__CateI__00200768" Association="Self.FK__Categorie__CateI__00200768">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="CategoriesSlider" EntitySet="CategoriesSlider" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderItem__Order__693CA210" Association="Self.FK__OrderItem__Order__693CA210">
+          <AssociationSet Name="FK__Categorie__CateI__236943A5" Association="Self.FK__Categorie__CateI__236943A5">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoriesSlider" EntitySet="CategoriesSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__CateI__5BE2A6F2" Association="Self.FK__Categorie__CateI__5BE2A6F2">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoriesSlider" EntitySet="CategoriesSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderItem__Order__01142BA1" Association="Self.FK__OrderItem__Order__01142BA1">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__CusID__6754599E" Association="Self.FK__Orders__CusID__6754599E">
+          <AssociationSet Name="FK__OrderItem__Order__245D67DE" Association="Self.FK__OrderItem__Order__245D67DE">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderItem__Order__5CD6CB2B" Association="Self.FK__OrderItem__Order__5CD6CB2B">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__CusID__02084FDA" Association="Self.FK__Orders__CusID__02084FDA">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__PaymentM__68487DD7" Association="Self.FK__Orders__PaymentM__68487DD7">
+          <AssociationSet Name="FK__Orders__CusID__25518C17" Association="Self.FK__Orders__CusID__25518C17">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__CusID__5EBF139D" Association="Self.FK__Orders__CusID__5EBF139D">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__PaymentM__02FC7413" Association="Self.FK__Orders__PaymentM__02FC7413">
             <End Role="PaymentMethods" EntitySet="PaymentMethods" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__CateID__59FA5E80" Association="Self.FK__Product__CateID__59FA5E80">
+          <AssociationSet Name="FK__Orders__PaymentM__2645B050" Association="Self.FK__Orders__PaymentM__2645B050">
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__PaymentM__5FB337D6" Association="Self.FK__Orders__PaymentM__5FB337D6">
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CateID__03F0984C" Association="Self.FK__Product__CateID__03F0984C">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Perform__5AEE82B9" Association="Self.FK__Product__Perform__5AEE82B9">
+          <AssociationSet Name="FK__Product__CateID__2739D489" Association="Self.FK__Product__CateID__2739D489">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CateID__60A75C0F" Association="Self.FK__Product__CateID__60A75C0F">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Perform__04E4BC85" Association="Self.FK__Product__Perform__04E4BC85">
             <End Role="PerformanceBattery" EntitySet="PerformanceBattery" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__ScreenS__5BE2A6F2" Association="Self.FK__Product__ScreenS__5BE2A6F2">
+          <AssociationSet Name="FK__Product__Perform__282DF8C2" Association="Self.FK__Product__Perform__282DF8C2">
+            <End Role="PerformanceBattery" EntitySet="PerformanceBattery" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Perform__619B8048" Association="Self.FK__Product__Perform__619B8048">
+            <End Role="PerformanceBattery" EntitySet="PerformanceBattery" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ScreenS__05D8E0BE" Association="Self.FK__Product__ScreenS__05D8E0BE">
             <End Role="ScreenSize" EntitySet="ScreenSize" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductCa__Camer__619B8048" Association="Self.FK__ProductCa__Camer__619B8048">
+          <AssociationSet Name="FK__Product__ScreenS__29221CFB" Association="Self.FK__Product__ScreenS__29221CFB">
+            <End Role="ScreenSize" EntitySet="ScreenSize" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ScreenS__628FA481" Association="Self.FK__Product__ScreenS__628FA481">
+            <End Role="ScreenSize" EntitySet="ScreenSize" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCa__Camer__06CD04F7" Association="Self.FK__ProductCa__Camer__06CD04F7">
             <End Role="CameraFeature" EntitySet="CameraFeature" />
             <End Role="ProductCamera" EntitySet="ProductCamera" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductCa__Produ__628FA481" Association="Self.FK__ProductCa__Produ__628FA481">
+          <AssociationSet Name="FK__ProductCa__Camer__2A164134" Association="Self.FK__ProductCa__Camer__2A164134">
+            <End Role="CameraFeature" EntitySet="CameraFeature" />
+            <End Role="ProductCamera" EntitySet="ProductCamera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCa__Camer__6383C8BA" Association="Self.FK__ProductCa__Camer__6383C8BA">
+            <End Role="CameraFeature" EntitySet="CameraFeature" />
+            <End Role="ProductCamera" EntitySet="ProductCamera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCa__Produ__07C12930" Association="Self.FK__ProductCa__Produ__07C12930">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductCamera" EntitySet="ProductCamera" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Color__5EBF139D" Association="Self.FK__ProductDe__Color__5EBF139D">
+          <AssociationSet Name="FK__ProductCa__Produ__2B0A656D" Association="Self.FK__ProductCa__Produ__2B0A656D">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductCamera" EntitySet="ProductCamera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductCa__Produ__6477ECF3" Association="Self.FK__ProductCa__Produ__6477ECF3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductCamera" EntitySet="ProductCamera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Color__08B54D69" Association="Self.FK__ProductDe__Color__08B54D69">
             <End Role="Color" EntitySet="Color" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Produ__5DCAEF64" Association="Self.FK__ProductDe__Produ__5DCAEF64">
+          <AssociationSet Name="FK__ProductDe__Color__2BFE89A6" Association="Self.FK__ProductDe__Color__2BFE89A6">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Color__656C112C" Association="Self.FK__ProductDe__Color__656C112C">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Produ__09A971A2" Association="Self.FK__ProductDe__Produ__09A971A2">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__RamID__5FB337D6" Association="Self.FK__ProductDe__RamID__5FB337D6">
+          <AssociationSet Name="FK__ProductDe__Produ__2CF2ADDF" Association="Self.FK__ProductDe__Produ__2CF2ADDF">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Produ__66603565" Association="Self.FK__ProductDe__Produ__66603565">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__RamID__0A9D95DB" Association="Self.FK__ProductDe__RamID__0A9D95DB">
             <End Role="Ram" EntitySet="Ram" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Stora__60A75C0F" Association="Self.FK__ProductDe__Stora__60A75C0F">
+          <AssociationSet Name="FK__ProductDe__RamID__2DE6D218" Association="Self.FK__ProductDe__RamID__2DE6D218">
+            <End Role="Ram" EntitySet="Ram" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__RamID__6754599E" Association="Self.FK__ProductDe__RamID__6754599E">
+            <End Role="Ram" EntitySet="Ram" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Stora__0B91BA14" Association="Self.FK__ProductDe__Stora__0B91BA14">
             <End Role="Storage" EntitySet="Storage" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDi__Produ__66603565" Association="Self.FK__ProductDi__Produ__66603565">
+          <AssociationSet Name="FK__ProductDe__Stora__2EDAF651" Association="Self.FK__ProductDe__Stora__2EDAF651">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Stora__68487DD7" Association="Self.FK__ProductDe__Stora__68487DD7">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDi__Produ__0C85DE4D" Association="Self.FK__ProductDi__Produ__0C85DE4D">
             <End Role="ProductDetail" EntitySet="ProductDetail" />
             <End Role="ProductDiscounts" EntitySet="ProductDiscounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductNe__Produ__6477ECF3" Association="Self.FK__ProductNe__Produ__6477ECF3">
+          <AssociationSet Name="FK__ProductDi__Produ__2FCF1A8A" Association="Self.FK__ProductDi__Produ__2FCF1A8A">
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+            <End Role="ProductDiscounts" EntitySet="ProductDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDi__Produ__693CA210" Association="Self.FK__ProductDi__Produ__693CA210">
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+            <End Role="ProductDiscounts" EntitySet="ProductDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductNe__Produ__0D7A0286" Association="Self.FK__ProductNe__Produ__0D7A0286">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductNews" EntitySet="ProductNews" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductQu__Produ__6383C8BA" Association="Self.FK__ProductQu__Produ__6383C8BA">
+          <AssociationSet Name="FK__ProductNe__Produ__30C33EC3" Association="Self.FK__ProductNe__Produ__30C33EC3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductNews" EntitySet="ProductNews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductNe__Produ__6A30C649" Association="Self.FK__ProductNe__Produ__6A30C649">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductNews" EntitySet="ProductNews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductQu__Produ__0E6E26BF" Association="Self.FK__ProductQu__Produ__0E6E26BF">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductQuestion" EntitySet="ProductQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductSl__Produ__656C112C" Association="Self.FK__ProductSl__Produ__656C112C">
+          <AssociationSet Name="FK__ProductQu__Produ__31B762FC" Association="Self.FK__ProductQu__Produ__31B762FC">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductQuestion" EntitySet="ProductQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductQu__Produ__6B24EA82" Association="Self.FK__ProductQu__Produ__6B24EA82">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductQuestion" EntitySet="ProductQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSl__Produ__0F624AF8" Association="Self.FK__ProductSl__Produ__0F624AF8">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductSlider" EntitySet="ProductSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSl__Produ__32AB8735" Association="Self.FK__ProductSl__Produ__32AB8735">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductSlider" EntitySet="ProductSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSl__Produ__6C190EBB" Association="Self.FK__ProductSl__Produ__6C190EBB">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSlider" EntitySet="ProductSlider" />
           </AssociationSet>
@@ -506,8 +1053,7 @@
             <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FPTSHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -632,6 +1178,7 @@
           <NavigationProperty Name="ProductQuestions" Relationship="Self.FK__ProductQu__Produ__6383C8BA" FromRole="Product" ToRole="ProductQuestion" />
           <NavigationProperty Name="ProductSliders" Relationship="Self.FK__ProductSl__Produ__656C112C" FromRole="Product" ToRole="ProductSlider" />
           <NavigationProperty Name="CameraFeatures" Relationship="Self.ProductCamera" FromRole="Product" ToRole="CameraFeature" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="ProductDetail">
           <Key>
@@ -651,6 +1198,8 @@
           <NavigationProperty Name="Ram" Relationship="Self.FK__ProductDe__RamID__5FB337D6" FromRole="ProductDetail" ToRole="Ram" />
           <NavigationProperty Name="Storage" Relationship="Self.FK__ProductDe__Stora__60A75C0F" FromRole="ProductDetail" ToRole="Storage" />
           <NavigationProperty Name="ProductDiscounts" Relationship="Self.FK__ProductDi__Produ__66603565" FromRole="ProductDetail" ToRole="ProductDiscounts" />
+          <Property Name="QuantityInventory" Type="Int32" />
+          <Property Name="QuantityPurchased" Type="Int32" />
         </EntityType>
         <EntityType Name="ProductDiscount">
           <Key>
@@ -1110,6 +1659,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="FPTSHOPModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="CateID" ColumnName="CateID" />
                 <ScalarProperty Name="ProName" ColumnName="ProName" />
@@ -1133,6 +1683,8 @@
           <EntitySetMapping Name="ProductDetails">
             <EntityTypeMapping TypeName="FPTSHOPModel.ProductDetail">
               <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="QuantityPurchased" ColumnName="QuantityPurchased" />
+                <ScalarProperty Name="QuantityInventory" ColumnName="QuantityInventory" />
                 <ScalarProperty Name="ProductDetailID" ColumnName="ProductDetailID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ColorID" ColumnName="ColorID" />

@@ -92,6 +92,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="FPTSHOPModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="CateID" ColumnName="CateID" />
           <ScalarProperty Name="ProName" ColumnName="ProName" />
@@ -115,6 +116,8 @@
     <EntitySetMapping Name="ProductDetails">
       <EntityTypeMapping TypeName="FPTSHOPModel.ProductDetail">
         <MappingFragment StoreEntitySet="ProductDetail">
+          <ScalarProperty Name="QuantityPurchased" ColumnName="QuantityPurchased" />
+          <ScalarProperty Name="QuantityInventory" ColumnName="QuantityInventory" />
           <ScalarProperty Name="ProductDetailID" ColumnName="ProductDetailID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ColorID" ColumnName="ColorID" />

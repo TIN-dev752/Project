@@ -13,6 +13,8 @@ namespace DuAnFptShop.Models.ViewModel
         public int ProductDetailID { get; set; }
         public Nullable<decimal> NewPrice { get; set; }
         public Nullable<decimal> OldPrice { get; set; }
+        public Nullable<int> QuantityInventory { get; set; }
+        public Nullable<int> QuantityPurchased { get; set; }
 
         //bảng product
         public int ProductID { get; set; }
