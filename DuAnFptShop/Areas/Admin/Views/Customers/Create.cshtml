@@ -1,0 +1,191 @@
+﻿@model DuAnFptShop.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header-content {
+        width: 100%;
+        background-color: #E1EDDB;
+        color: #91A990;
+        height: 50px;
+        padding: 0px 20px;
+        font-weight: bold;
+    }
+
+        .header-content h4 {
+            line-height: 50px;
+        }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .control-label {
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .Cate-text {
+        width: 100%;
+    }
+
+    .Cate-ID {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #CFD5DB;
+        max-width: 100%;
+        border-radius: 5px;
+        outline: none;
+        padding: 10px;
+    }
+
+    .Cate-Name {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #CFD5DB;
+        max-width: 100%;
+        border-radius: 5px;
+        outline: none;
+        padding: 10px;
+    }
+
+    .btn-default {
+        border: 1px solid #CFD5DB;
+        border-radius: 5px;
+    }
+
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
+
+        .btn-default a {
+            text-decoration: none;
+            color: #212529;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h4>QUẢN LÝ LOẠI HÀNG</h4>
+            </div>
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusID" class="control-label">Mã khách hàng</label>
+                <div class="Cate-text">
+                    <input id="CusID" name="CusID" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.CusID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusName" class="control-label col-md-2">Tên khách hàng</label>
+                <div class="Cate-text">
+                    <input id="CusName" name="CusName" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.CusName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusPhone" class="control-label">SĐT khách hàng</label>
+                <div class="Cate-text">
+                    <input id="CusPhone" name="CusPhone" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.CusPhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusGender" class="control-label">Giới tính</label>
+                <div class="Cate-text">
+                    <input id="CusGender" name="CusGender" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.CusGender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusEmail" class="control-label">Email</label>
+                <div class="Cate-text">
+                    <input id="CusEmail" name="CusEmail" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.CusEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="CusPassword" class="control-label">Mật khẩu khách hàng</label>
+                <div class="Cate-text">
+                    <input id="CusPassword" name="CusPassword" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.CusPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
+                <input type="submit" value="Nhập lại" class="btn btn-default" />
+                <button class="btn btn-default">
+                    @Html.ActionLink("Danh sách", "Index")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

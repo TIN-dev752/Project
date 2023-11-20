@@ -1,0 +1,175 @@
+﻿@model DuAnFptShop.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header-content {
+        width: 100%;
+        background-color: #E1EDDB;
+        color: #91A990;
+        height: 50px;
+        padding: 0px 20px;
+        font-weight: bold;
+    }
+
+        .header-content h4 {
+            line-height: 50px;
+        }
+
+    .body {
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+    }
+
+    h3{
+        width:100%;
+        margin-top:20px;
+    }
+
+
+    .Product-info {
+        width: 100%;
+        display: flex;
+    }
+
+        .Product-info .Product-img {
+            padding: 20px;
+            border: 1px solid #CFD5DB;
+            border-radius: 10px;
+        }
+
+        .Product-info .info {
+            margin-left: 20px;
+        }
+
+            .Product-info .info h2 {
+                color: #CD5C5C;
+                padding-bottom: 10px;
+            }
+
+    .body table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .body table tr {
+            width: 100%;
+        }
+
+            .body table tr th {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
+
+            .body table tr td {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
+
+    .btn-default {
+        border: 1px solid #CFD5DB;
+        border-radius: 5px;
+    }
+
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
+
+        .btn-default a {
+            text-decoration: none;
+            color: #212529;
+        }
+</style>
+
+
+<div>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h4>Xem chi tiết</h4>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div class="Product-info">
+                <div class="Product-img">
+                    <img src="@Url.Content(Model.OrderItems.FirstOrDefault().ProductDetail.Product.ProImage)" />
+                </div>
+                <div class="info">
+                    <h2>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</h2>
+                    <h5>MÔ TẢ TỔNG QUÁT SẢN PHẨM </h5>
+                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProDecription)</p>
+                    <h5>NHÓM SẢN PHẨM</h5>
+                    <p>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</p>
+                </div>
+            </div>
+            <h3>Danh sách hàng tồn</h3>
+            <table>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Thương hiệu</th>
+                    <th>Màu sắc</th>
+                    <th>Giá mới</th>
+                    <th>Giá cũ</th>
+                    <th>Số lượng tồn</th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Color.ColorName)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().ProductDetail.NewPrice)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().ProductDetail.OldPrice)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.QuantityInventory)</td>
+                </tr>
+            </table>
+            <h3>Danh sách hàng cần nhập</h3>
+            <table>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Thương hiệu</th>
+                    <th>Màu sắc</th>
+                    <th>Số lượng hàng cần nhập</th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Color.ColorName)</td>
+                    <td>@(Model.OrderItems.FirstOrDefault().ProductDetail.QuantityInventory - Model.OrderItems.FirstOrDefault().ProductDetail.QuantityPurchased)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="detail-btn">
+        <div class="container">
+            <div class="detail-btn-content">
+                <button class="btn btn-default">@Html.ActionLink("Danh sách", "Index")</button>
+            </div>
+        </div>
+    </div>
+</div>
+

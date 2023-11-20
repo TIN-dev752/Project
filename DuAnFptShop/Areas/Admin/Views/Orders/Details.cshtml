@@ -1,0 +1,162 @@
+﻿@model DuAnFptShop.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header-content {
+        width: 100%;
+        background-color: #E1EDDB;
+        color: #91A990;
+        height: 50px;
+        padding: 0px 20px;
+        font-weight: bold;
+    }
+
+        .header-content h4 {
+            line-height: 50px;
+        }
+
+    .body {
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+    }
+
+    .orders-info{
+        width:100%;
+    }
+
+    .order-info{
+        width:100%;
+        display:flex;
+        justify-content:left;
+    }
+
+    .order-info p:first-child{
+        font-weight:bold;
+    }
+
+    .order-info p{
+        padding-left:10px;
+    }
+
+
+    .body table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .body table tr {
+            width: 100%;
+        }
+
+            .body table tr th {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
+
+            .body table tr td {
+                border: 1px solid #CFD5DB;
+                padding: 10px;
+            }
+
+    .btn-default {
+        border: 1px solid #CFD5DB;
+        border-radius: 5px;
+    }
+
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
+
+        .btn-default a {
+            text-decoration: none;
+            color: #212529;
+        }
+</style>
+
+
+<div>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h4>Xem chi tiết đơn hàng</h4>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div class="orders-info">
+                <div class="order-info">
+                    <p>Tên người nhận: </p>
+                    <p>@Html.DisplayFor(model => model.ReceiverName)</p>
+                </div>
+                <div class="order-info">
+                    <p>SĐT người nhận: </p>
+                    <p>@Html.DisplayFor(model => model.ReceiverPhone)</p>
+                </div>
+                <div class="order-info">
+                    <p>Ngày đặt hàng: </p>
+                    <p>@Html.DisplayFor(model => model.OrderDate)</p>
+                </div>
+                <div class="order-info">
+                    <p>Địa chỉ giao hàng: </p>
+                    <p>@Html.DisplayFor(model => model.AddressDelivery)</p>
+                </div>
+                <div class="order-info">
+                    <p>Phương thức thanh toán: </p>
+                    <p>@Html.DisplayFor(model => model.PaymentMethod.PaymentMethodName)</p>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Thương hiệu</th>
+                    <th>Màu sắc</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                    <th>Thành Tiền</th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.ProName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Product.Category.CateName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().ProductDetail.Color.ColorName)</td>
+                    <td>@Html.DisplayFor(model => model.OrderItems.FirstOrDefault().Quantity)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().ProductDetail.OldPrice)</td>
+                    <td>@String.Format("{0:N0}", Model.OrderItems.FirstOrDefault().Quantity * Model.OrderItems.FirstOrDefault().ProductDetail.NewPrice)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="detail-btn">
+        <div class="container">
+            <div class="detail-btn-content">
+                @*<button class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) </button>*@
+                <button class="btn btn-default">@Html.ActionLink("Danh sách", "Index")</button>
+            </div>
+        </div>
+    </div>
+</div>

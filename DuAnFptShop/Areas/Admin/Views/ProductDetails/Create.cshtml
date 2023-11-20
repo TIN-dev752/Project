@@ -1,0 +1,234 @@
+﻿@model DuAnFptShop.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header-content {
+        width: 100%;
+        background-color: #E1EDDB;
+        color: #91A990;
+        height: 50px;
+        padding: 0px 20px;
+        font-weight: bold;
+    }
+
+        .header-content h4 {
+            line-height: 50px;
+        }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .control-label {
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .Cate-text {
+        width: 100%;
+    }
+
+    .Cate-ID {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #CFD5DB;
+        max-width: 100%;
+        border-radius: 5px;
+        outline: none;
+        padding: 10px;
+    }
+
+    .Cate-Name {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #CFD5DB;
+        max-width: 100%;
+        border-radius: 5px;
+        outline: none;
+        padding: 10px;
+    }
+
+    .btn-default {
+        border: 1px solid #CFD5DB;
+        border-radius: 5px;
+    }
+
+        .btn-default:hover {
+            background-color: peachpuff;
+        }
+
+        .btn-default a {
+            text-decoration: none;
+            color: #212529;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h4>QUẢN LÝ LOẠI HÀNG</h4>
+            </div>
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="ProductDetailID" class="control-label">Mã khuyến mãi</label>
+                <div class="Cate-text">
+                    <input id="ProductDetailID" name="ProductDetailID" type="text" class="Cate-ID" />
+                    @Html.ValidationMessageFor(model => model.ProductDetailID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="ProductID" class="control-label col-md-2">Mã chi tiết sản phẩm</label>
+                <div class="Cate-text">
+                    <input id="ProductID" name="ProductID" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="ColorID" class="control-label col-md-2">Loại khuyến mãi</label>
+                <div class="Cate-text">
+                    <input id="ColorID" name="ColorID" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="ColorImage" class="control-label col-md-2">Ngày kết thúc</label>
+                <div class="Cate-text">
+                    <input id="ColorImage" name="ColorImage" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.ColorImage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="NewPrice" class="control-label col-md-2">Giá trị khuyến mãi</label>
+                <div class="Cate-text">
+                    <input id="NewPrice" name="NewPrice" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.NewPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="OldPrice" class="control-label col-md-2">Mô tả khuyến mãi</label>
+                <div class="Cate-text">
+                    <input id="OldPrice" name="OldPrice" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.OldPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="RamID" class="control-label col-md-2">Ngày bắt đầu</label>
+                <div class="Cate-text">
+                    <input id="RamID" name="RamID" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.RamID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="StorageID" class="control-label col-md-2">Ngày kết thúc</label>
+                <div class="Cate-text">
+                    <input id="StorageID" name="StorageID" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.StorageID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="QuantityInventory" class="control-label col-md-2">Ngày kết thúc</label>
+                <div class="Cate-text">
+                    <input id="QuantityInventory" name="QuantityInventory" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.QuantityInventory, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <label for="QuantityPurchased" class="control-label col-md-2">Ngày kết thúc</label>
+                <div class="Cate-text">
+                    <input id="QuantityPurchased" name="QuantityPurchased" type="text" class="Cate-Name" />
+                    @Html.ValidationMessageFor(model => model.QuantityPurchased, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="form-group-content">
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
+                <input type="submit" value="Nhập lại" class="btn btn-default" />
+                <button class="btn btn-default">
+                    @Html.ActionLink("Danh sách", "Index")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
