@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "SuccessOrder";
+    Layout = "~/Views/Shared/_MasterLayout1.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/SuccessOrderCSS.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+</head>
+<body>
+    <div class="Wrapper">
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="@Url.Action("HomePage","Home")"><i class="fa-solid fa-chevron-left"></i> Tiếp tục mua sắm</a>
+                </div>
+            </div>
+        </div>
+        <div class="success-order">
+            <div class="container">
+                <div class="success-order-content">
+                    <div class="wrapper">
+                        <p>ĐẶT HÀNG THÀNH CÔNG</p>
+                        <p>Cảm ơn quý khách đã mua hàng tại FPTShop.com.vn</p>
+                        <br />
+                        <p>Tổng đài viên FPTShop sẽ liên hệ đền quý khách trong vòng <span>5 phút</span></p>
+                        <p>Xin cảm ơn quý khách đã cho chúng tôi cơ hội được phục vụ!</p>
+                        <table>
+                            <tr>
+                                <td colspan="2">Thông tin đặt hàng</td>
+                            </tr>
+                            <tr>
+                                <td>Mã đơn hàng:</td>
+                                <td>@ViewBag.OrderID</td>
+                            </tr>
+                            <tr>
+                                <td>Hình thức thanh toán:</td>
+                                <td>@ViewBag.PaymentMethod</td>
+                            </tr>
+                            <tr>
+                                <td>Họ tên khách hàng:</td>
+                                <td>@ViewBag.CustomerName</td>
+                            </tr>
+                            <tr>
+                                <td>Số điện thoại:</td>
+                                <td>@ViewBag.CustomerPhone</td>
+                            </tr>
+                        </table>
+                        <a href="@Url.Action("HomePage","Home")"><input type="button" value="MUA THÊM SẢN PHẨM KHÁC" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

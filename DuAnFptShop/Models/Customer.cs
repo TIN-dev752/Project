@@ -12,39 +12,52 @@
 namespace DuAnFptShop.Models
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Customer
-{
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Customer()
+    public partial class Customer
     {
 
-        this.Orders = new HashSet<Order>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Customer()
+        {
+
+            this.Orders = new HashSet<Order>();
+
+        }
+
+
+        public int CusID { get; set; }
+
+        public string CusName { get; set; }
+
+        public string CusPhone { get; set; }
+
+        public Nullable<bool> CusGender { get; set; }
+
+        public string CusEmail { get; set; }
+
+        public string CusPassword { get; set; }
+
+        [NotMapped]
+        [Compare("CusPassWord")]
+        [DisplayName("Nhap lai mat khau")]
+
+        public string ConfirmPass { get; set; }
+        [NotMapped]
+
+        public string ErrorLogin { get; set; }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Order> Orders { get; set; }
+
+
 
     }
-
-
-    public int CusID { get; set; }
-
-    public string CusName { get; set; }
-
-    public string CusPhone { get; set; }
-
-    public Nullable<bool> CusGender { get; set; }
-
-    public string CusEmail { get; set; }
-
-    public string CusPassword { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Order> Orders { get; set; }
-
-}
 
 }

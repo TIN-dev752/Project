@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "EmptyCart";
+    Layout = "~/Views/Shared/_MasterLayout1.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/EmptyCartCSS.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+</head>
+<body>
+    <div class="Wrapper">
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="@Url.Action("HomePage","Home")"><i class="fa-solid fa-chevron-left"></i> Tiếp tục mua sắm</a>
+                </div>
+            </div>
+        </div>
+        <div class="empty-card">
+            <div class="container">
+                <div class="empty-card-content">
+                    <div class="wrapper">
+                        <img src="~/images/empty-cart.jpg" />
+                        <h2>Chưa có sản phẩm nào trong giỏ hàng</h2>
+                        <p>Cùng mua sắm hàng ngàn sản phẩm tại FPTShop nhé!</p>
+                        <a href="@Url.Action("HomePage","Home")"><input type="button" value="MUA HÀNG"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

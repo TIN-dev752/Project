@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DuAnFptShop.Models.ViewModel.HomeViewModel>
 
 @{
-    ViewBag.Title = "LocSP";
+    ViewBag.Title = "Loc5000";
     Layout = "~/Views/Shared/_MasterLayout1.cshtml";
 }
 
@@ -56,13 +56,14 @@
                     </div>
                     <div class="product-menu">
                         <p>Mức giá</p>
-                        <a href="@Url.Action("ProductCategory","Home")" style="color: black"><input type="checkbox" name="all" value="Tất cả" checked />Tất cả</a>
-                        <a href="@Url.Action("LocSP","Category", new {pricemin = 0 ,pricemax = 2000000})" style="color: black"><input type="checkbox" name="duoi2trieu" value="Dưới 2 triệu" />Dưới 2 triệu</a>
-                        <a href="@Url.Action("LocSP","Category", new {pricemin = 2000000 ,pricemax = 4000000})" style="color: black"><input type="checkbox" name="tu2den4" value="Từ 2 - 4 triệu" />Từ 2 - 4 triệu</a>
-                        <a href="@Url.Action("LocSP","Category", new {pricemin = 4000000 ,pricemax = 7000000})" style="color: black"><input type="checkbox" name="tu4den7" value="Từ 4 - 7 triệu" />Từ 4 - 7 triệu</a>
-                        <a href="@Url.Action("LocSP","Category", new {pricemin = 7000000 ,pricemax = 13000000})" style="color: black"><input type="checkbox" name="tu7den13" value="Từ 7 - 13 triệu" />Từ 7 - 13 triệu</a>
-                        <a href="@Url.Action("LocSP","Category", new {pricemin = 13000000 ,pricemax = 50000000})" style="color: black"><input type="checkbox" name="tren13" value="Trên 13 triệu" />Trên 13 triệu</a>
+                        <a><input type="checkbox" name="all" value="Tất cả" checked />Tất cả</a>
+                        <a href="@Url.Action("LocSP","Category", new {pricemax = 2000000})" style="color:black"><input type="checkbox" name="duoi2trieu" label="Dưới 2 triệu" />Dưới 2 triệu</a>
+                        <a href="@Url.Action("LocSP","Category", new {pricemin = 2000000 ,pricemax = 4000000})" style="color:black"><input type="checkbox" name="tu2den4" label="Từ 2 - 4 triệu" onclick="window.location.href = '@Url.Action("LocSP","Home", new {pricemin = 2000000 ,pricemax = 4000000})';checked = false;" />Từ 2 - 4 triệu</a>
+                        <a href="@Url.Action("LocSP","Category", new {pricemin = 4000000 ,pricemax = 7000000})" style="color:black"><input type="checkbox" name="tu4den7" label="Từ 4 - 7 triệu" onclick="window.location.href = '@Url.Action("LocSP","Home", new {pricemin = 4000000 ,pricemax = 7000000})'; checked = false;" />Từ 4 - 7 triệu</a>
+                        <a href="@Url.Action("LocSP","Category", new {pricemin = 7000000 ,pricemax = 13000000})" style="color:black"><input type="checkbox" name="tu7den13" value="Từ 7 - 13 triệu" onclick="window.location.href = '@Url.Action("LocSP","Home", new {pricemin = 7000000 ,pricemax = 13000000})'; checked = false;" />Từ 7 - 13 triệu</a>
+                        <a href="@Url.Action("LocSP","Category", new { pricemin = 13000000 , pricemax = 50000000})" style="color:black"><input type="checkbox" name="tren13" value="Trên 13 triệu" onclick="window.location.href = '@Url.Action("LocSP","Home", new { pricemin = 13000000 ,pricemax = 50000000})'; checked = false;" />Trên 13 triệu</a>
                     </div>
+
                     <div class="product-menu">
                         <p>Hiệu năng và Pin</p>
                         <a href="@Url.Action("ProductCategory","Home")"><input type="checkbox" name="all" value="Tất cả" checked />Tất cả</a>
@@ -94,39 +95,40 @@
                 </div>
                 <div class="product-content-right">
                     <div class="product-content-right-head">
-                        <h3>Điện thoại samsung</h3>
+                        <h3>Điện thoại samsung<span style="font-size: 12px; color: #6C757D">(12 sản phẩm)</span></h3>
                     </div>
-                    <div class="slider-product-one-items">
-
-                        @foreach (var item in Model)
-                        {
-
-                            <div class="slider-product-one-item">
-                                <a href="@Url.Action("ProductDetail","Home", new {id = item.ProductDetailID})"><img src="@Url.Content(item.ProImage)" /></a>
-                                <div class="slider-product-one-item-text">
-                                    <div class="slider-product-one-item-text-info">
-                                        <p><a href="@Url.Action("ProductDetail","Home", new {id = item.ProductDetailID})">@Html.DisplayFor(modelitem => item.ProName)</a></p>
-                                        <p class="newPrice">@String.Format("{0:N0}", item.NewPrice) <span style="text-decoration:underline">đ</span></p>
-                                        <p class="oldPrice">@String.Format("{0:N0}", item.OldPrice) <span style="text-decoration:underline">đ</span></p>
-                                    </div>
-                                    <div class="slider-product-one-item-text-promo">
-                                        <ul>
-                                            <li><i class="fa-solid fa-microchip"></i> @Html.DisplayFor(modelitem => item.Cpu)</li>
-                                            <li><i class="fa-regular fa-mobile"></i> @Html.DisplayFor(modelitem => item.Screen.Split(',')[0])</li>
-                                            <li><i class="fa-solid fa-memory"></i> @Html.DisplayFor(modelitem => item.RamName)</li>
-                                            <li><i class="fa-solid fa-ticket"></i> @Html.DisplayFor(modelitem => item.StorageName)</li>
-                                        </ul>
-                                        @*<img src="" />
-                                            <p></p>*@
-                                        <a href="@Url.Action("ProductDetail","Home", new {id = item.ProductDetailID})"><input type="button" value="MUA NGAY" /></a>
+                    <div class="product-content-right-items">
+                        <div class="slider-product-one-items">
+                            @foreach (var item in Model)
+                            {
+                                <div class="slider-product-one-item">
+                                    <a href="@Url.Action("ProductDetail","Home", new {id=item.ProductDetailID})"><img src="@Url.Content(item.ProImage)" /></a>
+                                    <div class="slider-product-one-item-text">
+                                        <div class="slider-product-one-item-text-info">
+                                            <p><a href="@Url.Action("ProductDetail","Home", new {id=item.ProductDetailID})">@Html.DisplayFor(modelitem => item.ProName)</a></p>
+                                            <p class="newPrice">@String.Format("{0:N0}", item.NewPrice) <span style="text-decoration:underline">đ</span></p>
+                                            <p class="oldPrice">@String.Format("{0:N0}", item.OldPrice) <span style="text-decoration:underline">đ</span></p>
+                                        </div>
+                                        <div class="slider-product-one-item-text-promo">
+                                            <ul>
+                                                <li><i class="fa-solid fa-microchip"></i> @Html.DisplayFor(modelitem => item.Cpu)</li>
+                                                <li><i class="fa-regular fa-mobile"></i> @Html.DisplayFor(modelitem => item.Screen.Split(',')[0])</li>
+                                                <li><i class="fa-solid fa-memory"></i> @Html.DisplayFor(modelitem => item.RamName)</li>
+                                                <li><i class="fa-solid fa-ticket"></i> @Html.DisplayFor(modelitem => item.StorageName)</li>
+                                            </ul>
+                                            @*<img src="" />
+                                                <p></p>*@<img src="" />
+                                            <p></p><img src="" />
+                                            <p></p>
+                                            <a href="@Url.Action("ProductDetail","Home", new {id=item.ProductDetailID})"><input type="button" value="MUA NGAY" /></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <section class="history">

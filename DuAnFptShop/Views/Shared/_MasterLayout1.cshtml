@@ -15,7 +15,7 @@
     <div id="main-menu">
         <div class="container">
             <ul>
-                <li><a href=""><img src="~/images/logoFPT.png" /></a></li>
+                <li><a href="@Url.Action("HomePage","Home")"><img src="~/images/logoFPT.png" /></a></li>
                 <li>
                     <form action="/home/search" method="post">
                         <input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện...cần tìm" maxlength="57" name="data" />
@@ -24,170 +24,51 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                </li>   
-                @*<li>
-                    <a href=""><i class="fa-solid fa-file-invoice"></i><br />Thông tin hay</a>
-                    <div class="subMenu">
-                        <ul>
-                            <li><a href="">Tin mới</a></li>
-                            <li><a href="">Khuyến mãi</a></li>
-                            <li><a href="">Điện máy - Gia dụng</a></li>
-                            <li><a href="">Thủ thuật</a></li>
-                            <li><a href="">For Gamers</a></li>
-                            <li><a href="">Video hot</a></li>
-                            <li><a href="">Đánh giá - tư vấn</a></li>
-                            <li><a href="">App & Game</a></li>
-                            <li><a href="">Sự kiện</a></li>
-                        </ul>
-                    </div>
                 </li>
-                <li><a href="" title="Thanh toán & tiện ích"><i class="fa-solid fa-file-invoice-dollar"></i><br />Thanh toán & tiện ích</a></li>*@
                 <li id="account-form"> <a href="#" title="Tài khoản của tôi"><i class="fa-solid fa-user"></i><br />Tài khoản của tôi</a></li>
-                <li><a href="ShopCart"><i class="fa-solid fa-cart-shopping"></i><br />Giỏ hàng</a></li>
+                <li><a href="@Url.Action("ShopCart","Home")"><i class="fa-solid fa-cart-shopping"></i><br />Giỏ hàng</a></li>
             </ul>
-            <div class="account-form">
-                <div class="account-form-content">
-                    <h2>Đăng Nhập Hoặc Tạo Tài Khoản <span id="account-form-closed">X</span></h2>
-                    <form id="form-dang-ky" action="" method="post">
-                        <img style="width:30%; height:30%" src="~/images/account-form.jpg" />
-                        <p>
-                            Nhập số điện thoại mua hàng để hưởng<br />
-                            đặc quyền riêng tại FPT Shop
-                        </p>
-                        <input type="text" class="phone-number" placeholder="Nhập số điện thoại" maxlength="10" onkeyup="validatePhoneNumber()"/>
-                        <span class="phonenumber-error"></span>
-                        <button>TIẾP TỤC</button>
-                    </form>
+            @if (Session["CusPhone"] == null)
+            {
+                <div class="account-form">
+                    <div class="account-form-content">
+                        <h2>Đăng Nhập Hoặc Tạo Tài Khoản <span id="account-form-closed">X</span></h2>
+                        <form id="form-dang-ky" action="/Login/Login" method="post">
+                            <img style="width:30%; height:30%" src="~/images/account-form.jpg" />
+                            <p>
+                                Nhập số điện thoại mua hàng để hưởng<br />
+                                đặc quyền riêng tại FPT Shop
+                            </p>
+                            <input type="text" class="phone-number" placeholder="Nhập số điện thoại" maxlength="10" onkeyup="validatePhoneNumber()" name="data1" />
+                            <input type="password" class="phone-number" placeholder="Nhập mật khẩu" name="data2" />
+
+                            <span class="phonenumber-error"></span>
+                            <button>TIẾP TỤC</button>
+                            <a href="@Url.Action("Register","Login")">ĐĂNG KÝ</a>
+                        </form>
+
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="Infor">
+                </div>
+            }
         </div>
     </div>
     <nav>
         <div class="container">
             <ul>
                 <li>
-                    <a href="ProductCategory"><i class="fa-solid fa-mobile-screen-button"></i> ĐIỆN THOẠI SAMSUNG</a>
+                    <a href="@Url.Action("ProductCategory","Home")"><i class="fa-solid fa-mobile-screen-button"></i> ĐIỆN THOẠI SAMSUNG</a>
                     <div class="subMenu">
                         <p>HÃNG SẢN XUẤT</p>
                         <ul>
-                            @*<li><a href="">Apple (iPhone)</a></li>*@
                             <li><a href="@Url.Action("ProductCategory","Home")">SamSung</a></li>
-                            @*<li><a href="">Oppo</a></li>
-                            <li><a href="">Xiaomi</a></li>
-                            <li><a href="">Realmi</a></li>
-                            <li><a href="">Honor</a></li>
-                            <li><a href="">Vivo</a></li>
-                            <li><a href="">Asus</a></li>
-                            <li><a href="">Masstel</a></li>
-                            <li><a href="">Nokia</a></li>*@
                         </ul>
                     </div>
                 </li>
-                @*<li>
-                    <a href=""><i class="fa-solid fa-laptop"></i>LAPTOP</a>
-                    <div class="subMenu">
-                        <p>HÃNG SẢN XUẤT</p>
-                        <ul>
-                            <li><a href="">Apple (MacBook)</a></li>
-                            <li><a href="">Asus</a></li>
-                            <li><a href="">HP</a></li>
-                            <li><a href="">Lenovo</a></li>
-                            <li><a href="">Acer</a></li>
-                            <li><a href="">MSI</a></li>
-                            <li><a href="">Dell</a></li>
-                            <li><a href="">Gigabyte</a></li>
-                            <li><a href="">Huawei</a></li>
-                            <li><a href="">LG</a></li>
-                            <li><a href="">Masstel</a></li>
-                            <li><a href="">Vaio</a></li>
-                            <li><a href="">Microsoft (Surface)</a></li>
-                            <li><a href="">Chuwi</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href=""><i class="fa-light fa-tablet-button fa-rotate-270"></i>MÁY TÍNH BẢNG</a>
-                    <div class="subMenu">
-                        <p>HÃNG SẢN XUẤT</p>
-                        <ul>
-                            <li><a href="">Apple (iPad)</a></li>
-                            <li><a href="">Samsung</a></li>
-                            <li><a href="">Masstel</a></li>
-                            <li><a href="">Lenovo</a></li>
-                            <li><a href="">Xiaomi</a></li>
-                            <li><a href="">Oppo</a></li>
-                            <li><a href="">Coolpad</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href=""><i class="fa-light fa-tablet-button fa-rotate-270"></i>APPLE</a>
-                    <div class="subMenu">
-                        <p>CÁC SẢN PHẨM APPLE</p>
-                        <ul>
-                            <li><a href="">iPhone</a></li>
-                            <li><a href="">iPad</a></li>
-                            <li><a href="">MacBook</a></li>
-                            <li><a href="">Apple Watch</a></li>
-                            <li><a href="">Apple tai nghe</a></li>
-                            <li><a href="">iMac</a></li>
-                            <li><a href="">Mac Mini</a></li>
-                            <li><a href="">Sạc & Cáp</a></li>
-                            <li><a href="">Ốp Lưng & Bao da</a></li>
-                            <li><a href="">Apple TV</a></li>
-                            <li><a href="">Chuột & Trackpad</a></li>
-                            <li><a href="">Bàn phím</a></li>
-                            <li><a href="">Air Tag</a></li>
-                            <li><a href="">Hàng dự án</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href=""><i class="fa-solid fa-computer"></i>PC-LINH KIỆN</a>
-                    <div class="subMenu">
-                        <ul>
-                            <li><a href="">PC</a></li>
-                            <li><a href="">Linh Kiện</a></li>
-                            <li><a href="">Màn Hình</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href=""><i class="fa-solid fa-headphones-simple"></i>PHỤ KIỆN</a>
-                    <div class="subMenu">
-                        <ul>
-                            <li><a href="">Router</a></li>
-                            <li><a href="">Bao da ốp lưng</a></li>
-                            <li><a href="">Sạc dự phòng</a></li>
-                            <li><a href="">Thẻ nhớ</a></li>
-                            <li><a href="">Phụ kiện apple</a></li>
-                            <li><a href="">Miếng dán màn hình</a></li>
-                            <li><a href="">loa</a></li>
-                            <li><a href="">USB - Ổ cứng</a></li>
-                            <li><a href="">Cáp sạc</a></li>
-                            <li><a href="">Tai nghe</a></li>
-                            <li><a href="">Chuột</a></li>
-                            <li><a href="">Bàn ghế gaming</a></li>
-                            <li><a href="">Balo - Túi xách</a></li>
-                            <li><a href="">TV BOX</a></li>
-                            <li><a href="">Phụ kiện khác</a></li>
-                            <li><a href="">Phụ kiện khẩu trang lọc khí</a></li>
-                            <li><a href="">Bàn phím</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href=""><i class="fa-solid fa-arrow-rotate-left fa-flip-horizontal"></i>MÁY CŨ GIÁ RẺ</a></li>
-                <li><a href=""><i class="fa-solid fa-house-laptop"></i>HÀNG GIA DỤNG</a></li>
-                <li><a href=""><i class="fa-solid fa-sim-card"></i>SIM & THẺ</a></li>
-                <li>
-                    <a href=""><i class="fa-brands fa-shopify"></i>KHUYẾN MÃI</a>
-                    <div class="subMenu">
-                        <ul>
-                            <li><a href="">Thông tin trao thưởng</a></li>
-                            <li><a href="">Tất cả khuyến mãi</a></li>
-                        </ul>
-                    </div>
-                </li>*@
             </ul>
         </div>
     </nav>
@@ -296,8 +177,6 @@
             </div>
         </div>
     </footer>
-    <script src="~/Scripts/MasterLayoutJS.js">
-
-    </script>
+    <script src="~/Scripts/MasterLayoutJS.js"></script>
 </body>
 </html>

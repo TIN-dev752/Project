@@ -154,6 +154,10 @@
     margin-right:5px;
 }
 
+.product-content-left .product-menu a{
+    color:#000000;
+}
+
 .product-content-left .product-menu:first-child {
     display: flex;
     flex-wrap: wrap;
@@ -413,7 +417,6 @@
 .history-content {
     width: 100%;
     padding: 40px;
-    /*border:1px solid transparent;*/
     background-color: #FFFFFF;
 }
 

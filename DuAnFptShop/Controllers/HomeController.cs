@@ -47,7 +47,7 @@ namespace DuAnFptShop.Controllers
             return PartialView(homeViewModel);
         }
 
-        public ActionResult OutstandingListPartialView()//lấy sản phẩm theo tiêu chí năm sản xuất
+        public ActionResult OutstandingListPartialView()//lấy sản phẩm theo tiêu chí số lượng sản phẩm đã mua
         {
             var outstandingList = (from p in db.Products
                                    join pd in db.ProductDetails on p.ProductID equals pd.ProductID
@@ -75,11 +75,10 @@ namespace DuAnFptShop.Controllers
                                    .OrderByDescending(pd => pd.QuantityPurchased)
                                    .Take(8)
                                    .ToList();
-
             return PartialView(outstandingList);
         }
 
-        public ActionResult ProductDetail(int id)
+        public ActionResult ProductDetail(int id = 1)
         {
             ProductDetail pro = db.ProductDetails.FirstOrDefault(p => p.ProductDetailID == id);
             DetailProduct detailProduct = new DetailProduct
@@ -152,6 +151,11 @@ namespace DuAnFptShop.Controllers
             return View(homeViewModel);
         }
 
+        public ActionResult EmptyCart()
+        {
+            return View();
+        }
+
         public List<CartItem> GetCart()
         {
             List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
@@ -182,12 +186,13 @@ namespace DuAnFptShop.Controllers
         {
             List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
             CartItem item = myCart.FirstOrDefault(m => m.ProductID == id);
-            if(item !=null)
+            if (item != null)
             {
                 myCart.Remove(item);
                 Session["GioHang"] = myCart;
+                db.SaveChanges();
             }
-            return RedirectToAction("ShopCart");
+            return RedirectToAction("ShopCart", "Home");
         }
         public ActionResult Update(int id, int Number)
         {
@@ -245,13 +250,14 @@ namespace DuAnFptShop.Controllers
         {
             List<CartItem> myCart = GetCart();
             if (myCart == null || myCart.Count == 0)
-                return RedirectToAction("HomePage", "Home");
+                return RedirectToAction("EmptyCart", "Home");
             ViewBag.TotalNumber = GetTotalNumber();
             ViewBag.TotalPrice = GetTotalPrice();
             ViewBag.LastPrice = GetLastPrice();
             ViewBag.DisCount = GetDisCount();
             return View(myCart);
         }
+
         public ActionResult CartPartial()
         {
             ViewBag.TotalNumber = GetTotalNumber();
@@ -286,6 +292,38 @@ namespace DuAnFptShop.Controllers
             }).Where(p => p.ProName.ToUpper().Contains(search.ToUpper()));
             return View(prolst.ToList());
 
+        }
+
+        [HttpPost]
+        public ActionResult SuccessOrder(string nameUser, string phone, string nameReceiver, string phoneNumberReceiver, string paymentMethod, string addressDetail)
+        {
+            var myCart = GetCart();
+
+            Order newOrder = new Order
+            {
+                OrderDate = DateTime.Now,
+                AddressDelivery = addressDetail,
+                ReceiverName = nameReceiver,
+                ReceiverPhone = phoneNumberReceiver,
+                TotalPrice = GetTotalPrice(),
+                LastPrice = GetLastPrice(),
+
+                OrderItems = myCart.Select(cartItem => new OrderItem
+                {
+                    ProductDetailID = cartItem.ProductID,
+                    Quantity = cartItem.Number,
+                }).ToList()
+            };
+            db.Orders.Add(newOrder);
+            db.SaveChanges();
+
+            int orderID = newOrder.OrderID;
+            ViewBag.OrderID = orderID;
+            ViewBag.CustomerName = nameUser;
+            ViewBag.CustomerPhone = phone;
+            ViewBag.PaymentMethod = paymentMethod;
+
+            return RedirectToAction("SuccessOrder");
         }
 
     }

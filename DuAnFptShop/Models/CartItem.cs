@@ -12,9 +12,15 @@ namespace DuAnFptShop.Models
         public string NamePro { get; set; }
         public string ImagePro { get; set; }
         public decimal Price { get; set; }
+
         public int Number { get; set; }
         public Nullable<decimal> NewPrice { get; set; }
         public Nullable<decimal> OldPrice { get; set; }
+        public string ColorImage { get; set; }
+
+        public int ColorID { get; set; }
+        public string ColorName { get; set; }
+
         public int DiscountID { get; set; }
         public Nullable<decimal> DiscountValue { get; set; }
         public string DiscountDecription { get; set; }  
@@ -39,6 +45,8 @@ namespace DuAnFptShop.Models
             this.Number = 1;
             this.NewPrice = productDB.ProductDetails.FirstOrDefault().NewPrice;
             this.OldPrice = productDB.ProductDetails.FirstOrDefault().OldPrice;
+            this.ColorImage = productDB.ProductDetails.FirstOrDefault().ColorImage;
+            this.ColorName = productDB.ProductDetails.FirstOrDefault().Color.ColorName;
             this.DiscountDecription = productDB.ProductDetails.FirstOrDefault().ProductDiscounts.FirstOrDefault().DiscountDecription;
             this.DiscountValue = productDB.ProductDetails.FirstOrDefault().ProductDiscounts.FirstOrDefault().DiscountValue;
         }

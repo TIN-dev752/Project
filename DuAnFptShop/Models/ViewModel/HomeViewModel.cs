@@ -22,6 +22,7 @@ namespace DuAnFptShop.Models.ViewModel
         public string ProName { get; set; }
         public string Screen { get; set; }
         public string Cpu { get; set; }
+        public string Battery { get; set; }
         public string ProImage { get; set; }
         public Nullable<int> LaunchTime { get; set; }
 
@@ -32,6 +33,8 @@ namespace DuAnFptShop.Models.ViewModel
         //bảng storage
         public int StorageID { get; set; }
         public string StorageName { get; set; }
+
+
 
     }
 }
