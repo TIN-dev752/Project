@@ -190,17 +190,19 @@ namespace DuAnFptShop.Controllers
             }
             return RedirectToAction("ShopCart","Home");
         }
-        public ActionResult Update(int id, int Number)
+        public ActionResult Update(int id,int number)
         {
-            List<CartItem> myCart = Session["GioHang"] as List<CartItem>;
-            CartItem item = myCart.FirstOrDefault(m => m.ProductID == id);
-            if (item != null)
+            List<CartItem> myCart = GetCart();
+            CartItem currentProduct = myCart.FirstOrDefault(p => p.ProductID == id);
+            if (currentProduct == null)
             {
-                item.Number = Number;
-                Session["GioHang"] = myCart;
-                db.SaveChanges();
+                currentProduct = new CartItem(id);
             }
-            return RedirectToAction("ShopCart");
+            else
+            {
+                currentProduct.Number++;
+            }
+            return RedirectToAction("ShopCart", "Home");
         }
 
         private int GetTotalNumber()
